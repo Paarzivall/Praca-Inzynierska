@@ -2,8 +2,7 @@ import pygame
 import os
 from src.Level1.DrawBackground import DrawBackground
 from src.ResizeClass import resize
-from src.Level1.Numbers import Numbers
-from src.Level1.Pins import Pins
+from src.Level1.ActionClass import Action
 
 
 class Level_1_Main(DrawBackground):
@@ -13,14 +12,11 @@ class Level_1_Main(DrawBackground):
         super().__init__(self.background)
         self.board = pygame.display.get_surface()
         self.clock = pygame.time.Clock()
-        self.numbers = Numbers()
-        self.pins = Pins()
-        print(self.numbers.binary)
+        self.action = Action()
 
     def draw(self):
         self.draw_window()
-        self.numbers.draw_numbers()
-        self.pins.draw_pins()
+        self.action.draw_action()
 
     def run(self):
         while not self.handle_events():
@@ -34,6 +30,9 @@ class Level_1_Main(DrawBackground):
             if event.type == pygame.locals.QUIT:
                 pygame.quit()
                 return True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_TAB:
+                    print("HELPER")
 
 
 lvl1 = Level_1_Main()

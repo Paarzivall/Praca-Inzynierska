@@ -51,4 +51,13 @@ class Numbers(object):
             else:
                 tmp_list.append(1)
             tmp = int(tmp / 2)
-        return tmp_list[::-1]
+        return self.add_optional_element(tmp_list)
+
+    @staticmethod
+    def add_optional_element(tmp_list):
+        tmp_list = tmp_list[::-1]
+        if len(tmp_list) < 7:
+            tmp_list.insert(0, 0)
+        return tmp_list
+
+
