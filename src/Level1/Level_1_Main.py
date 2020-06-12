@@ -1,18 +1,18 @@
 import pygame
-import os
-from src.Level1.DrawBackground import DrawBackground
-from src.ResizeClass import resize
+from src.DrawBackground import DrawBackground
 from src.Level1.ActionClass import Action
+import src.MainImages as main_img
 
 
 class Level_1_Main(DrawBackground):
+
     def __init__(self):
-        os.environ['SDL_VIDEO_CENTERED'] = '1'
-        self.background = resize(pygame.image.load("../../img/Level1/otwieranie_zamka.png"))
+        self.background = main_img.first_background
         super().__init__(self.background)
         self.board = pygame.display.get_surface()
         self.clock = pygame.time.Clock()
         self.action = Action()
+        self.is_done = self.action.end_level()
 
     def draw(self):
         self.draw_window()
@@ -33,7 +33,3 @@ class Level_1_Main(DrawBackground):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_TAB:
                     print("HELPER")
-
-
-lvl1 = Level_1_Main()
-lvl1.run()

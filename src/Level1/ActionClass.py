@@ -1,6 +1,5 @@
 import pygame
 from sys import exit
-from time import sleep
 from src.Level1.Pins import Pins
 from src.Level1.Numbers import Numbers
 
@@ -46,6 +45,7 @@ class Action(Pins):
 
     def end_level(self):
         if self.actual_positions == self.numbers.binary:
+
             return True
         else:
             return False

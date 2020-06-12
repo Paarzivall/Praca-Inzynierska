@@ -1,18 +1,25 @@
 import os
+import pygame
+from src.Level1.Level_1_Main import Level_1_Main
+from src.PlatformsMainPackage.BaseLevelPlatform import BaseLevelPlatform
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'  # centrowanie okna
+pygame.init()
 
 
 class GameController(object):
     def __init__(self):
-        self.backgrounds = "img/Level1/otwieranie_zamka.png"
-        # self.level1_pins = {}
-        # self.level1_numbers = {}
+        self.current_level = 0
+        self.player_lives = 3
+        self.avaliable_levels = [Level_1_Main(), BaseLevelPlatform()]
+        self.level_with_lives = {1: 'no', 2: 'yes'}
 
-    def tmp(self):
-        if os.path.isfile(self.level1_background):
-            print("ok")
-        else: print("nok")
-
-    def get_name(self):
-        return self.level1_background
+    def controller(self):
+        for level in self.avaliable_levels:
+            while level.is_done is False:
+                level.run()
 
 
+if __name__ == '__main__':
+    start_game = GameController()
+    start_game.controller()

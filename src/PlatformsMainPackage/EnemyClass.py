@@ -1,0 +1,2 @@
+class EnemyClass(object):
+    pass
