@@ -24,6 +24,7 @@ class Action(Pins):
                 self.board.blit(self.pins_down[pin], self.positions_down[pin])
             if pygame.MOUSEBUTTONUP:
                 if click == (1, 0, 0):
+                    # print(self.actual_positions)
                     if self.actual_positions[pin] == 1:
                         event = self.board.blit(self.pins_up[pin], self.positions_up[pin]).collidepoint(mouse)
                         if event:

@@ -55,9 +55,13 @@ class Numbers(object):
 
     @staticmethod
     def add_optional_element(tmp_list):
+        print(tmp_list)
         tmp_list = tmp_list[::-1]
         if len(tmp_list) < 7:
+            if len(tmp_list) < 6:
+                tmp_list.insert(0, 0)
             tmp_list.insert(0, 0)
+        # print(tmp_list)
         return tmp_list
 
 
