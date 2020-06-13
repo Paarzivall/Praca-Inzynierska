@@ -53,7 +53,8 @@ class Numbers(object):
                     tmp_list.insert(0, 0)
                 tmp_list.insert(0, 0)
             tmp_list.insert(0, 0)
-        # print(tmp_list)
+        print("tmop")
+        print(tmp_list)
         return tmp_list
 
 

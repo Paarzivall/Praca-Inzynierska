@@ -1,7 +1,7 @@
 import pygame
 import os
 from src.ResizeClass import resize
-"""
+
 # otwieranie zamka
 
 first_background = resize(pygame.image.load(os.path.join('..\img\Level1', 'otwieranie_zamka.png')))
@@ -46,31 +46,35 @@ pin_6_down = resize(pygame.image.load(os.path.join('..\img\Level1\Bolce', 'bolec
 pins_down = {0: pin_0_down, 1: pin_1_down, 2: pin_2_down,
              3: pin_3_down, 4: pin_4_down, 5: pin_5_down, 6: pin_6_down}
 
-"""
+DARKRED = pygame.color.THECOLORS['darkred']
+LIGHTBLUE = pygame.color.THECOLORS['lightblue']
 
-
+SIZESCREEN = WIDTH, HEIGHT = 1266, 840
 # Platformowe Levele
 
-platform_background = resize(pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'background.png')))
+platform_background = resize(pygame.image.load(os.path.join('..\img\Platforms_Levels', 'background.png')))
+platform_background2 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'new_img.jpg'))
 
 # Ruchy Postaci
 
-stand_right = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_standR.png'))
-walk_right1 = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_walkR1.png'))
-walk_right2 = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_walkR2.png'))
-stand_left = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_standL.png'))
-walk_left1 = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_walkL1.png'))
-walk_left2 = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_walkL2.png'))
-fail_left = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_fallL.png'))
-fail_right = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_fallR.png'))
-jump_left = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_jumpL.png'))
-jump_right = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'player_jumpR.png'))
+stand_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_standR.png'))
+walk_right1 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_walkR1.png'))
+walk_right2 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_walkR2.png'))
+stand_left = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_standL.png'))
+walk_left1 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_walkL1.png'))
+walk_left2 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_walkL2.png'))
+fail_left = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_fallL.png'))
+fail_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_fallR.png'))
+jump_left = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_jumpL.png'))
+jump_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'player_jumpR.png'))
 images_right = [walk_right1, walk_right2]
 images_left = [walk_left1, walk_left2]
 
+heart = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'heart.png'))
+
 # Platformy
-platform_left = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'grass_L.png'))
-platform_center = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'grass_C.png'))
-platform_right = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'grass_R.png'))
-single_platform = pygame.image.load(os.path.join('..\..\img\Platforms_Levels', 'grass_single.png'))
+platform_left = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'grass_L.png'))
+platform_center = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'grass_C.png'))
+platform_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'grass_R.png'))
+single_platform = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'grass_single.png'))
 platforms = [single_platform, platform_left, platform_center, platform_right]

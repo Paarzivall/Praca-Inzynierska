@@ -1,26 +1,27 @@
 import pygame
 import src.MainImages as main_img
+from src.DrawBackground import DrawBackground
+from src.PlatformsMainPackage.LifeController import LifeController
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, lives, start_image):
-        self.lives = lives
+    def __init__(self, life, start_image):
+        super().__init__()
+        self.life = LifeController(life)
         self.actual_image = start_image
         self.rect = self.actual_image.get_rect()
-        self.player_right = main_img.images_right
-        self.player_left = main_img.images_left
         self.direction_of_movement = 'right'
         self.count = 0
         self.level = None
-        self.player_position_x = 50
+        self.rect = self.actual_image.get_rect()
         self.player_movement_x = 0
-        self.player_position_y = 540
         self.player_movement_y = 0
-        self.surface = pygame.display.get_surface()
+        self.draw_back = DrawBackground.get_instance()
 
-    def draw(self):
-        # self.surface.blit(self.actual_image, self.rect.center)
-        self.surface.blit(self.actual_image, (self.player_position_x, self.player_position_y))
+
+    def draw(self, board):
+        board.blit(self.actual_image, self.rect)
+        # self.life.draw_player_life(board)
 
     def turn_left(self):
         self.direction_of_movement = 'left'
@@ -35,13 +36,14 @@ class Player(pygame.sprite.Sprite):
 
     def jump(self):
         if self.player_movement_y == 0:
-            self.player_movement_y = -7
+            self.player_movement_y = -20
 
     def _gravity(self):
         if self.player_movement_y == 0:
             self.player_movement_y = 1
         else:
             self.player_movement_y += 0.5
+            # self.draw_back.add_y_position(10)
         if self.player_movement_y > 15:
             self.player_movement_y = 14
 
@@ -57,44 +59,84 @@ class Player(pygame.sprite.Sprite):
             self.count += 1
 
     def get_event(self, event):
+        left_pressed = False
+        right_pressed = False
+        jump_pressed = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                 self.turn_left()
+                left_pressed = True
             if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                 self.turn_right()
+                right_pressed = True
             if event.key == pygame.K_UP or event.key == pygame.K_w:
                 self.jump()
+                jump_pressed = True
         if event.type == pygame.KEYUP:
             if (event.key == pygame.K_LEFT or event.key == pygame.K_a) and self.player_movement_x < 0:
                 self.stop()
                 self.actual_image = main_img.stand_left
+                left_pressed = False
             if (event.key == pygame.K_RIGHT or event.key == pygame.K_d) and self.player_movement_x > 0:
                 self.stop()
                 self.actual_image = main_img.stand_right
+                right_pressed = False
+
+        if left_pressed is True:
+            print("jeden")
+            self.draw_back.add_x_position(-10)
+        if right_pressed is True:
+            print("jeden1")
+            self.draw_back.add_x_position(10)
+        if jump_pressed is True:
+            print("jeden2")
+            self.draw_back.add_y_position(-10)
 
     def update_images(self):
-        self.player_position_x += self.player_movement_x
-        # collisions = pygame.sprite.spritecollide(self, self.level, False)
-       # collisions = pygame.sprite.collide_rect(self.rect, self.level)
-        #for o in collisions:
-         #   if self.movement_x > 0:
-          #      self.rect.left = o.rect.right
-           # if self.movement_x < 0:
-            #    self.rect.right = o.rect.left
+        self.rect[0] += self.player_movement_x
+        collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
+        for col in collisions:
+            if self.player_movement_x > 0:
+                self.rect.left = col.rect.right
+            if self.player_movement_x < 0:
+                self.rect.right = col.rect.left
+
         if self.player_movement_x < 0:
-            self._move(self.player_left)
+            self._move(main_img.images_left)
         if self.player_movement_x > 0:
-            self._move(self.player_right)
-        # self._gravity()
-        self.player_position_y += self.player_movement_y
+            self._move(main_img.images_right)
+        self._gravity()
+        self.rect[1] += self.player_movement_y
 
-        #collisions = pygame.sprite.collide_rect(self.rect, self.level)
-        #for o in collisions:
-        #    if self.movement_y < 0:
-         #       self.rect.top = o.rect.bottom
-          #  if self.movement_y > 0:
-           #     self.rect.bottom = o.rect.top
-        # self.player_movement_y = 0
+        collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
+        for col in collisions:
+            if self.player_movement_y < 0:
+                self.rect.top = col.rect.bottom
+            if self.player_movement_y > 0:
+                self.rect.bottom = col.rect.top
+            self.player_movement_y = 0
 
+        if self.direction_of_movement == "right":
+            if self.player_movement_y > 0:
+                self.actual_image = main_img.fail_right
+            if self.player_movement_y < 0:
+                self.actual_image = main_img.jump_right
 
-
+        if self.direction_of_movement == "left":
+            if self.player_movement_y > 0:
+                self.actual_image = main_img.fail_left
+            if self.player_movement_y < 0:
+                self.actual_image = main_img.jump_left
+        if self.player_movement_y == 0 and self.player_movement_x == 0:
+            if self.direction_of_movement == "left":
+                self.actual_image = main_img.stand_left
+            else:
+                self.actual_image = main_img.stand_right
+        if self.rect[1] > 640:
+            if self.direction_of_movement == 'left':
+                self.actual_image = main_img.fail_left
+            else:
+                self.actual_image = main_img.fail_right
+            self.rect[0] = 50
+            self.rect[1] = 520
+            self.life.del_life(1)

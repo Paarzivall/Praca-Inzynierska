@@ -32,8 +32,8 @@ class Action(Pins):
                         event = self.board.blit(self.pins_down[pin], self.positions_down[pin]).collidepoint(mouse)
                         if event:
                             self.event_down(pin)
-        if self.end_level():
-            exit()
+        # if self.end_level():
+        #     exit()
 
     def event_up(self, pin):
         self.board.blit(self.pins_down[pin], self.positions_down[pin])
@@ -45,7 +45,6 @@ class Action(Pins):
 
     def end_level(self):
         if self.actual_positions == self.numbers.binary:
-
             return True
         else:
             return False
