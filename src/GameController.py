@@ -26,6 +26,7 @@ class GameController(object):
                 lvl = ExampleLvl(player)
                 player.rect.center = lvl.get_surface().get_rect().center
                 player.level = lvl
+                lvl.update()
                 lvl.run()
 
 

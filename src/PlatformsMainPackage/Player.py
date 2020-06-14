@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
         if self.player_movement_y == 0:
             self.player_movement_y = 1
         else:
-            self.player_movement_y += 0.5
+            self.player_movement_y += 0.35
         if self.player_movement_y > 15:
             self.player_movement_y = 14
 
@@ -74,21 +74,20 @@ class Player(pygame.sprite.Sprite):
                 self.actual_image = main_img.stand_right
 
     def update_images(self):
+        self.falling = False
+        self._gravity()
         self.rect[0] += self.player_movement_x
-        # Ta pętla powoduje teleportacje gracza trzeba dodać warunki
-        # o pozycji gracza 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:
-            if self.player_movement_x > 0:
+            if self.player_movement_x < 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
                 self.rect.left = col.rect.right
-            if self.player_movement_x < 0:
+            if self.player_movement_x > 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
                 self.rect.right = col.rect.left
 
         if self.player_movement_x < 0:
             self._move(main_img.images_left)
         if self.player_movement_x > 0:
             self._move(main_img.images_right)
-        self._gravity()
         self.rect[1] += self.player_movement_y
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)

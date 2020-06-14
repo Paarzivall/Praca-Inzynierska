@@ -69,7 +69,7 @@ class BaseLevelPlatform(DrawBackground):
             self.add_x_position(-1 * main_img.SPEED_BACKGROUND_X)
             self.move_platform('x', 'right')
         if keys[pygame.K_w] or keys[pygame.K_UP]:
-            self.add_y_position(main_img.SPEED_BACKGROUND_Y)
+            self.add_y_position(main_img.SPEED_BACKGROUND_Y * 2)
             self.move_platform('y', 'up')
         elif self.player.falling:
             self.add_y_position(-1 * main_img.SPEED_BACKGROUND_Y)
@@ -91,7 +91,7 @@ class BaseLevelPlatform(DrawBackground):
         elif typ == 'y':
             if direction == 'up':
                 for simple_p in self.set_of_platforms:
-                    simple_p.move_platform_y(main_img.SPEED_PLATFORM_Y)
+                    simple_p.move_platform_y(main_img.SPEED_PLATFORM_Y * 2)
             if direction == 'down':
                 for simple_p in self.set_of_platforms:
                     simple_p.move_platform_y(-1 * main_img.SPEED_PLATFORM_Y)
