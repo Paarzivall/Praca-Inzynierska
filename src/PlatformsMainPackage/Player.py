@@ -1,6 +1,5 @@
 import pygame
 import src.MainImages as main_img
-from src.DrawBackground import DrawBackground
 from src.PlatformsMainPackage.LifeController import LifeController
 
 
@@ -16,12 +15,13 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.actual_image.get_rect()
         self.player_movement_x = 0
         self.player_movement_y = 0
-        self.draw_back = DrawBackground.get_instance()
-
+        self.falling = False
+        self.min_y = None
+        self.start_player_position_x = self.rect[0]
+        self.start_player_position_y = self.rect[1]
 
     def draw(self, board):
         board.blit(self.actual_image, self.rect)
-        # self.life.draw_player_life(board)
 
     def turn_left(self):
         self.direction_of_movement = 'left'
@@ -37,13 +37,13 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         if self.player_movement_y == 0:
             self.player_movement_y = -20
+            self.falling = False
 
     def _gravity(self):
         if self.player_movement_y == 0:
             self.player_movement_y = 1
         else:
             self.player_movement_y += 0.5
-            # self.draw_back.add_y_position(10)
         if self.player_movement_y > 15:
             self.player_movement_y = 14
 
@@ -52,48 +52,31 @@ class Player(pygame.sprite.Sprite):
             self.actual_image = images[0]
         if self.count >= 4 and self.count < 8:
             self.actual_image = images[1]
-
         if self.count > 8:
             self.count = 0
         else:
             self.count += 1
 
     def get_event(self, event):
-        left_pressed = False
-        right_pressed = False
-        jump_pressed = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                 self.turn_left()
-                left_pressed = True
             if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                 self.turn_right()
-                right_pressed = True
             if event.key == pygame.K_UP or event.key == pygame.K_w:
                 self.jump()
-                jump_pressed = True
         if event.type == pygame.KEYUP:
             if (event.key == pygame.K_LEFT or event.key == pygame.K_a) and self.player_movement_x < 0:
                 self.stop()
                 self.actual_image = main_img.stand_left
-                left_pressed = False
             if (event.key == pygame.K_RIGHT or event.key == pygame.K_d) and self.player_movement_x > 0:
                 self.stop()
                 self.actual_image = main_img.stand_right
-                right_pressed = False
-
-        if left_pressed is True:
-            print("jeden")
-            self.draw_back.add_x_position(-10)
-        if right_pressed is True:
-            print("jeden1")
-            self.draw_back.add_x_position(10)
-        if jump_pressed is True:
-            print("jeden2")
-            self.draw_back.add_y_position(-10)
 
     def update_images(self):
         self.rect[0] += self.player_movement_x
+        # Ta pętla powoduje teleportacje gracza trzeba dodać warunki
+        # o pozycji gracza 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:
             if self.player_movement_x > 0:
@@ -119,24 +102,31 @@ class Player(pygame.sprite.Sprite):
         if self.direction_of_movement == "right":
             if self.player_movement_y > 0:
                 self.actual_image = main_img.fail_right
+                self.falling = True
             if self.player_movement_y < 0:
                 self.actual_image = main_img.jump_right
+                self.falling = False
 
         if self.direction_of_movement == "left":
             if self.player_movement_y > 0:
                 self.actual_image = main_img.fail_left
+                self.falling = True
             if self.player_movement_y < 0:
                 self.actual_image = main_img.jump_left
+                self.falling = False
         if self.player_movement_y == 0 and self.player_movement_x == 0:
+            self.falling = False
             if self.direction_of_movement == "left":
                 self.actual_image = main_img.stand_left
             else:
                 self.actual_image = main_img.stand_right
-        if self.rect[1] > 640:
+        if self.rect[1] > self.min_y:
             if self.direction_of_movement == 'left':
                 self.actual_image = main_img.fail_left
+                self.falling = True
             else:
                 self.actual_image = main_img.fail_right
-            self.rect[0] = 50
-            self.rect[1] = 520
+                self.falling = True
+            self.rect[0] = self.start_player_position_x
+            self.rect[1] = self.start_player_position_y
             self.life.del_life(1)

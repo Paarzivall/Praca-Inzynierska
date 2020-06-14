@@ -12,22 +12,21 @@ class DrawBackground(object):
             DrawBackground(main_img.platform_background)
         return DrawBackground._instance
 
-    def __init__(self, background):
+    def __init__(self, background, start_x, start_y):
         self.background = background
+        self.rect = self.background.get_rect()
         self.frame = pygame.display.set_mode((1280, 720))
-        self.x = 0
-        self.y = 0
+        self.x = start_x
+        self.y = start_y
         self.clock = pygame.time.Clock()
         DrawBackground._instance = self
 
+    def set_to_start_position(self, x, y):
+        self.x = x
+        self.y = y
+
     def draw_window(self, *args):
-        size = self.background.get_size()
-        if self.x <= 10 or self.y <= 30:
-           #  print(self.x, self.y)
-            self.frame.blit(self.background, (self.x, self.y))
-        else:
-            # print(self.x, self.y)
-            self.frame.blit(self.background, (self.x - 10, self.y - 10))
+        self.frame.blit(self.background, (self.x, self.y))
         for drawable in args:
             drawable.draw_on(self.frame)
 
@@ -35,11 +34,10 @@ class DrawBackground(object):
         self.background = background
 
     def get_frame(self):
-        # print("frame " + str(self.frame))
         return self.frame
 
-    def add_x_position(self, size=1):
+    def add_x_position(self, size=main_img.SPEED_BACKGROUND_X):
         self.x += size
 
-    def add_y_position(self, size=1):
+    def add_y_position(self, size=main_img.SPEED_BACKGROUND_Y):
         self.y += size

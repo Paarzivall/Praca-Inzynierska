@@ -2,6 +2,16 @@ import pygame
 import os
 from src.ResizeClass import resize
 
+SIZESCREEN = WIDTH, HEIGHT = 1266, 840
+SPEED_X = 4
+SPEED_Y = 1
+SPEED_PLATFORM_X = SPEED_X / 2
+SPEED_PLATFORM_Y = SPEED_Y / 2
+SPEED_BACKGROUND_X = SPEED_X / 4
+SPEED_BACKGROUND_Y = SPEED_Y / 4
+BLOCKS_WIDTH = 70
+
+
 # otwieranie zamka
 
 first_background = resize(pygame.image.load(os.path.join('..\img\Level1', 'otwieranie_zamka.png')))
@@ -46,10 +56,6 @@ pin_6_down = resize(pygame.image.load(os.path.join('..\img\Level1\Bolce', 'bolec
 pins_down = {0: pin_0_down, 1: pin_1_down, 2: pin_2_down,
              3: pin_3_down, 4: pin_4_down, 5: pin_5_down, 6: pin_6_down}
 
-DARKRED = pygame.color.THECOLORS['darkred']
-LIGHTBLUE = pygame.color.THECOLORS['lightblue']
-
-SIZESCREEN = WIDTH, HEIGHT = 1266, 840
 # Platformowe Levele
 
 platform_background = resize(pygame.image.load(os.path.join('..\img\Platforms_Levels', 'background.png')))

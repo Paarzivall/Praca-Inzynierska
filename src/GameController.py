@@ -19,9 +19,9 @@ class GameController(object):
     def controller(self):
         lvl1 = Level_1_Main()
         while True:
-            if self.current_level == 1 and lvl1.is_done is False:
-                lvl1.run()
-            else:
+            #if self.current_level == 1 and lvl1.is_done is False:
+            #    lvl1.run()
+            #else:
                 player = Player(3, main_img.stand_right)
                 lvl = ExampleLvl(player)
                 player.rect.center = lvl.get_surface().get_rect().center

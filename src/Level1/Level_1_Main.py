@@ -9,7 +9,7 @@ class Level_1_Main(DrawBackground):
 
     def __init__(self):
         self.background = main_img.first_background
-        super().__init__(self.background)
+        super().__init__(self.background, 0, 0)
         self.board = pygame.display.get_surface()
         self.action = Action()
         self.is_done = False

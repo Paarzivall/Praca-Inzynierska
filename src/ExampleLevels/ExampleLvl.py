@@ -10,20 +10,14 @@ class ExampleLvl(BaseLevelPlatform):
         super().__init__(main_img.platform_background2, player)
         self.surface = pygame.display.get_surface()
         self.is_done = True
+        # przy liście platform zakładam że 1 na liście jest zawsze startową platformą
         list_platforms = [[420, 70, 750, 350],
-                          [980, 70, 0, main_img.HEIGHT - 70],
-                          [560, 70, 0, 650],
-                          [140, 70, 1240, 600]]
+                          [980, 70, 0, main_img.HEIGHT - 170],
+                          [350, 70, 1240, 600]]
+        self.calculate_min_y_of_platforms(list_platforms)
 
         for w in list_platforms:
-            self.set_of_platforms.add(Platforms(main_img.platform_center, *w))
+            self.set_of_platforms.add(Platforms(*w))
 
     def get_surface(self):
         return self.surface
-
-"""
-player = Player(3, main_img.stand_right)
-lvl = ExampleLvl(player)
-player.rect.center = lvl.get_surface().get_rect().center
-player.level = lvl
-lvl.run()"""
