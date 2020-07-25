@@ -57,21 +57,27 @@ class BaseLevelPlatform(DrawBackground):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_TAB:
                     print("HELPER")
+                elif event.key == pygame.K_w or event.key == pygame.K_UP:
+                    self.add_y_position(2)
+                    self.move_platform('y', 'up')
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
                     self.add_y_position(-1)
             self.player.get_event(event)
+
+        tmp_player_position_x = self.player.rect.x
+        tmp_player_position_y = self.player.rect.y
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_a] or keys[pygame.K_LEFT]:
+        if keys[pygame.K_a] or keys[pygame.K_LEFT] and tmp_player_position_x != self.player.rect.x:
             self.add_x_position(main_img.SPEED_BACKGROUND_X)
             self.move_platform('x', 'left')
-        if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
+        if keys[pygame.K_d] or keys[pygame.K_RIGHT] and tmp_player_position_x != self.player.rect.x:
             self.add_x_position(-1 * main_img.SPEED_BACKGROUND_X)
             self.move_platform('x', 'right')
-        if keys[pygame.K_w] or keys[pygame.K_UP]:
+        if keys[pygame.K_w] or keys[pygame.K_UP] and tmp_player_position_y != self.player.rect.y:
             self.add_y_position(main_img.SPEED_BACKGROUND_Y * 2)
             self.move_platform('y', 'up')
-        elif self.player.falling:
+        if self.player.falling:
             self.add_y_position(-1 * main_img.SPEED_BACKGROUND_Y)
             self.move_platform('y', 'down')
         if self.reset_map != self.life.player_life:
@@ -94,7 +100,7 @@ class BaseLevelPlatform(DrawBackground):
                     simple_p.move_platform_y(main_img.SPEED_PLATFORM_Y * 2)
             if direction == 'down':
                 for simple_p in self.set_of_platforms:
-                    simple_p.move_platform_y(-1 * main_img.SPEED_PLATFORM_Y)
+                    simple_p.move_platform_y(-0.05 * main_img.SPEED_PLATFORM_Y)
 
 
 
