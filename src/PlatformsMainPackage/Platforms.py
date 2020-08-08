@@ -22,7 +22,12 @@ class Platforms(pygame.sprite.Sprite):
         self.rect[0] += speed
 
     def move_platform_y(self, speed):
-        self.rect[1] += speed
+        if not (self.rect[1] > self.start_position_y - 70 and speed > 0):
+            self.rect[1] = self.start_position_y
+        elif not (self.rect[1] < self.start_position_y - 70 and speed < 0):
+            self.rect[1] = self.start_position_y
+        else:
+            self.rect[1] += speed
 
     def draw(self, surface):
         blocks_counter = int(self.width / main_img.BLOCKS_WIDTH)

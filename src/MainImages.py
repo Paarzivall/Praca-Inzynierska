@@ -92,3 +92,22 @@ platform_center = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'gra
 platform_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'grass_R.png'))
 single_platform = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'grass_single.png'))
 platforms = [single_platform, platform_left, platform_center, platform_right]
+
+# Przeciwnicy
+enemy_stand_left = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_standL.png'))
+enemy_stand_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_standL.png'))
+enemy_walk_right1 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_walkR1.png'))
+enemy_walk_right2 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_walkR2.png'))
+enemy_walk_left1 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_walkL1.png'))
+enemy_walk_left2 = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_walkL2.png'))
+enemy_dead_left = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_deadL.png'))
+enemy_dead_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'zombie_deadL.png'))
+
+enemy_images_right = [enemy_walk_right1, enemy_walk_right2]
+enemy_images_left = [enemy_walk_left1, enemy_walk_left2]
+
+# Pociski
+bullet_left = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'bullet_L.png'))
+bullet_right = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'bullet_R.png'))
+
+gun = pygame.image.load(os.path.join('..\img\Platforms_Levels', 'shotgun.png'))

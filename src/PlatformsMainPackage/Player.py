@@ -1,7 +1,7 @@
 import pygame
 import src.MainImages as main_img
 from src.PlatformsMainPackage.LifeController import LifeController
-
+from src.PlatformsMainPackage.BulletClass import BulletClass
 
 """
     Główna klasa gracza, odpowiada za:
@@ -33,10 +33,12 @@ class Player(pygame.sprite.Sprite):
         self.min_y = None
         self.start_player_position_x = self.rect[0]
         self.start_player_position_y = self.rect[1]
+        self.items = set()
+        self.set_of_items = pygame.sprite.Group()
+        self.set_of_bullets = pygame.sprite.Group()
 
     def draw(self, board):
         """
-
         :param board: 'tablica' na której rysuje gracza
         :type board: surface
         :return: None
@@ -105,6 +107,21 @@ class Player(pygame.sprite.Sprite):
         else:
             self.count += 1
 
+    def pick_up(self):
+        for item in self.set_of_items:
+            if item.rect.colliderect(self.rect):
+                self.items.add(item.name_of_item)
+                self.set_of_items.remove(item)
+
+    def shot(self, event):
+        if self.items.__len__() > 0:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    if self.direction_of_movement == 'right':
+                        self.set_of_bullets.add(BulletClass(main_img.bullet_right, self.direction_of_movement, self.rect.center))
+                    if self.direction_of_movement == 'left':
+                        self.set_of_bullets.add(BulletClass(main_img.bullet_left, self.direction_of_movement, self.rect.center))
+
     def get_event(self, event):
         """
         metoda sterująca zachowaniem gracza: sprawdzanie wciśniętych klawiszy oraz
@@ -113,6 +130,7 @@ class Player(pygame.sprite.Sprite):
         :type event: pygame.event
         :return: None
         """
+        # print(self.rect.x)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                 self.turn_left()
@@ -137,12 +155,15 @@ class Player(pygame.sprite.Sprite):
         self._gravity()
         self.rect[0] += self.player_movement_x
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
+        enemy_col = pygame.sprite.spritecollide(self, self.level.enemy, False)
         for col in collisions:
             if self.player_movement_x < 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
-
                 self.rect.left = col.rect.right
             if self.player_movement_x > 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
                 self.rect.right = col.rect.left
+            if collisions:
+                if enemy_col:
+                    print("hit")
 
         if self.player_movement_x < 0:
             self._move(main_img.images_left)
@@ -151,12 +172,16 @@ class Player(pygame.sprite.Sprite):
         self.rect[1] += self.player_movement_y
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
+
         for col in collisions:
             if self.player_movement_y < 0:
                 self.rect.top = col.rect.bottom
             if self.player_movement_y > 0:
                 self.rect.bottom = col.rect.top
             self.player_movement_y = 0
+            enemy_col = pygame.sprite.spritecollide(self, self.level.enemy, False)
+            if col and enemy_col:
+                print("hit")
 
         if self.direction_of_movement == "right":
             if self.player_movement_y > 0:
@@ -189,3 +214,9 @@ class Player(pygame.sprite.Sprite):
             self.rect[0] = self.start_player_position_x
             self.rect[1] = self.start_player_position_y
             self.life.del_life(1)
+            self.reset_level()
+        self.pick_up()
+
+    def reset_level(self):
+        for enemy in self.level.enemy:
+            enemy.rect.x = enemy.start_x
