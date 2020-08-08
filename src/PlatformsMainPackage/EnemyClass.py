@@ -4,6 +4,7 @@ import src.MainImages as main_img
 
 class EnemyClass(pygame.sprite.Sprite):
     def __init__(self, start_img, life, platform):
+        super().__init__()
         self.image = start_img
         self.life = life
         self.images_left = main_img.enemy_images_left
@@ -11,18 +12,20 @@ class EnemyClass(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self._count = 0
         self.enemy_movement_x = 1
+        self.enemy_movement_y = 0
         self.platform = platform
         self.start = self.platform.rect.top
         self.rect.x = self.platform.rect.x
         self.start_x = self.rect.x + 10
         self.start_y = self.platform.rect.y - 110
+        self.angle = 0
 
     def draw_enemy(self, board):
         if self.platform.rect.x >= self.rect.x:
             self.enemy_movement_x *= -1
         elif self.platform.rect.x + self.platform.width - 70 <= self.rect.x:
             self.enemy_movement_x *= -1
-        board.blit(self.image, (self.rect.x, self.platform.rect.y - 110))
+        board.blit(pygame.transform.rotate(self.image, self.angle), (self.rect.x, self.platform.rect.y - 110 - self.enemy_movement_y))
 
     def move_enemy(self, speed):
         self.rect[0] += speed
@@ -30,6 +33,9 @@ class EnemyClass(pygame.sprite.Sprite):
     def enemy_update(self):
         self.rect.x += self.enemy_movement_x
         if self.life == 0:
+            self.enemy_movement_x = 0
+            self.enemy_movement_y = - 90
+            self.angle = - 90
             self.kill()
         if self.life > 0:
             if self.enemy_movement_x > 0:

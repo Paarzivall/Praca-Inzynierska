@@ -46,9 +46,9 @@ class BaseLevelPlatform(DrawBackground):
     def kill_enemy(self):
         for enemy in self.enemy:
             for bullet in self.player.set_of_bullets:
-                print(bullet.rect, enemy.rect)
-                if bullet.rect.colliderect(enemy.rect):
+                if bullet.rect.center[1] + 55 == enemy.start_y + 110:
                     enemy.life -= 1
+                    # self.player.set_of_bullets.remove(bullet)
 
     def _destroy_bullet(self):
         for bullet in self.player.set_of_bullets:

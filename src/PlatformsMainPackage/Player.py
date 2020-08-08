@@ -146,6 +146,13 @@ class Player(pygame.sprite.Sprite):
                 self.stop()
                 self.actual_image = main_img.stand_right
 
+    def enemy_collide(self):
+        for enemy in self.level.enemy:
+            if self.rect.center[1] + 55 == enemy.start_y + 110 and (self.rect.right == enemy.rect.right - 50 or
+                                                                    self.rect.left == enemy.rect.left - 50):
+                self.life.del_life(1)
+                self.rect.y -= 150
+
     def update_images(self):
         """
         metoda do aktualizowania obrazów, sprawdzania kolizji z platformami etc
@@ -215,6 +222,7 @@ class Player(pygame.sprite.Sprite):
             self.rect[1] = self.start_player_position_y
             self.life.del_life(1)
             self.reset_level()
+        self.enemy_collide()
         self.pick_up()
 
     def reset_level(self):
