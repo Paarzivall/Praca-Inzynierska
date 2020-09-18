@@ -74,17 +74,10 @@ class Player(pygame.sprite.Sprite):
         metoda dzięki której nasz gracz może skakać
         :return: None
         """
-        if self.player_movement_y == 0:
+
+        if self.player_movement_y == 0 or self.player_movement_y == 16:
             self.player_movement_y = -16
             self.falling = False
-
-    def trigger_jump(self):
-        """
-        metoda dzięki której nasz gracz może skakać
-        :return: None
-        """
-        self.player_movement_y = -16
-        self.falling = False
 
     def _gravity(self):
         """
@@ -148,7 +141,6 @@ class Player(pygame.sprite.Sprite):
         :type event: pygame.event
         :return: None
         """
-        # print(self.rect.x)
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                 self.turn_left()
@@ -156,8 +148,6 @@ class Player(pygame.sprite.Sprite):
                 self.turn_right()
             if event.key == pygame.K_UP or event.key == pygame.K_w:
                 self.jump()
-                if self.player_movement_y > 0:
-                    self.trigger_jump()
         if event.type == pygame.KEYUP:
             if (event.key == pygame.K_LEFT or event.key == pygame.K_a) and self.player_movement_x < 0:
                 self.stop()
@@ -191,13 +181,12 @@ class Player(pygame.sprite.Sprite):
                 self.rect.left = col.rect.right
             if self.player_movement_x > 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
                 self.rect.right = col.rect.left
-        #print(self.player_movement_y)
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_transport_platforms, False)
         for col in collisions:
-            if self.player_movement_x < 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
+            if self.player_movement_x < 0 and self.player_movement_y > 16:
                 self.rect.left = col.rect.right
-            if self.player_movement_x > 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
+            if self.player_movement_x > 0 and self.player_movement_y > 16:
                 self.rect.right = col.rect.left
 
         if self.player_movement_x < 0:
@@ -212,12 +201,6 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = col.rect.bottom
             if self.player_movement_y > 0:
                 self.rect.bottom = col.rect.top
-            #self.player_movement_y = 0
-
-        """
-                    w powyższej pętli robi double jumpy :/
-
-        """
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:
@@ -249,6 +232,7 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.actual_image = main_img.stand_right
         if self.rect[1] > self.min_y:
+            #tutaj reset mapy do stanu początkowego po spadnięciu gracza poniżej poziomu najniższej platformy
             if self.direction_of_movement == 'left':
                 self.actual_image = main_img.fail_left
                 self.falling = True
