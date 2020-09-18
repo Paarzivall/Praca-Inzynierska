@@ -78,6 +78,14 @@ class Player(pygame.sprite.Sprite):
             self.player_movement_y = -16
             self.falling = False
 
+    def trigger_jump(self):
+        """
+        metoda dzięki której nasz gracz może skakać
+        :return: None
+        """
+        self.player_movement_y = -16
+        self.falling = False
+
     def _gravity(self):
         """
         metoda, która obsługuje grawitację: dzięki niej po skoku gracz 'opada'
@@ -100,7 +108,7 @@ class Player(pygame.sprite.Sprite):
         """
         if self.count < 4:
             self.actual_image = images[0]
-        if self.count >= 4 and self.count < 8:
+        if 4 <= self.count < 8:
             self.actual_image = images[1]
         if self.count > 8:
             self.count = 0
@@ -108,12 +116,22 @@ class Player(pygame.sprite.Sprite):
             self.count += 1
 
     def pick_up(self):
+        """
+        metoda służąca za akcje podnoszenia "item'ów", takich jak broń.
+        :return: None
+        """
         for item in self.set_of_items:
             if item.rect.colliderect(self.rect):
                 self.items.add(item.name_of_item)
                 self.set_of_items.remove(item)
 
     def shot(self, event):
+        """
+        metoda odpowiadająca za strzelanie pociskami przez gracza w danym kierunku:
+        tworzy obiekt 'BulletClass', który jest naszym pociskiem
+        :param event: zbiór eventów wykrytych przez pygame
+        :return: None
+        """
         if self.items.__len__() > 0:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
@@ -138,6 +156,8 @@ class Player(pygame.sprite.Sprite):
                 self.turn_right()
             if event.key == pygame.K_UP or event.key == pygame.K_w:
                 self.jump()
+                if self.player_movement_y > 0:
+                    self.trigger_jump()
         if event.type == pygame.KEYUP:
             if (event.key == pygame.K_LEFT or event.key == pygame.K_a) and self.player_movement_x < 0:
                 self.stop()
@@ -147,6 +167,10 @@ class Player(pygame.sprite.Sprite):
                 self.actual_image = main_img.stand_right
 
     def enemy_collide(self):
+        """
+        metoda sterująca życiem oraz zachowaniem gracza podczas zderzenia z przeciwnikiem
+        :return: None
+        """
         for enemy in self.level.enemy:
             if self.rect.center[1] + 55 == enemy.start_y + 110 and (self.rect.right == enemy.rect.right - 50 or
                                                                     self.rect.left == enemy.rect.left - 50):
@@ -162,15 +186,19 @@ class Player(pygame.sprite.Sprite):
         self._gravity()
         self.rect[0] += self.player_movement_x
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
-        enemy_col = pygame.sprite.spritecollide(self, self.level.enemy, False)
         for col in collisions:
             if self.player_movement_x < 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
                 self.rect.left = col.rect.right
             if self.player_movement_x > 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
                 self.rect.right = col.rect.left
-            if collisions:
-                if enemy_col:
-                    print("hit")
+        #print(self.player_movement_y)
+
+        collisions = pygame.sprite.spritecollide(self, self.level.set_of_transport_platforms, False)
+        for col in collisions:
+            if self.player_movement_x < 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
+                self.rect.left = col.rect.right
+            if self.player_movement_x > 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
+                self.rect.right = col.rect.left
 
         if self.player_movement_x < 0:
             self._move(main_img.images_left)
@@ -178,17 +206,26 @@ class Player(pygame.sprite.Sprite):
             self._move(main_img.images_right)
         self.rect[1] += self.player_movement_y
 
-        collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
+        collisions = pygame.sprite.spritecollide(self, self.level.set_of_transport_platforms, False)
+        for col in collisions:
+            if self.player_movement_y < 0:
+                self.rect.top = col.rect.bottom
+            if self.player_movement_y > 0:
+                self.rect.bottom = col.rect.top
+            #self.player_movement_y = 0
 
+        """
+                    w powyższej pętli robi double jumpy :/
+
+        """
+
+        collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:
             if self.player_movement_y < 0:
                 self.rect.top = col.rect.bottom
             if self.player_movement_y > 0:
                 self.rect.bottom = col.rect.top
             self.player_movement_y = 0
-            enemy_col = pygame.sprite.spritecollide(self, self.level.enemy, False)
-            if col and enemy_col:
-                print("hit")
 
         if self.direction_of_movement == "right":
             if self.player_movement_y > 0:
