@@ -19,11 +19,11 @@ SPEED_BACKGROUND_Y = 0
 BLOCKS_WIDTH = 70
 MAX_BACKGROUND_X = 500"""
 
-
-# otwieranie zamka
+path = ""
 if os.path.isdir('..\img'):
     path = "..\\"
 
+# otwieranie zamka
 first_background = resize(pygame.image.load(os.path.join(path + 'img\Level1', 'otwieranie_zamka.png')))
 
 # cyfry do 1 levelu
@@ -119,3 +119,6 @@ bullet_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'bul
 bullet_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'bullet_R.png'))
 
 gun = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'shotgun.png'))
+
+# Portal pod koniec rundy
+portal = resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'finish_portal.png')))

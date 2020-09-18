@@ -172,6 +172,8 @@ class Player(pygame.sprite.Sprite):
         metoda do aktualizowania obrazów, sprawdzania kolizji z platformami etc
         :return: None
         """
+
+        print(self.player_movement_y)
         self.falling = False
         self._gravity()
         self.rect[0] += self.player_movement_x
@@ -225,7 +227,7 @@ class Player(pygame.sprite.Sprite):
             if self.player_movement_y < 0:
                 self.actual_image = main_img.jump_left
                 self.falling = False
-        if self.player_movement_y == 0 and self.player_movement_x == 0:
+        if (self.player_movement_y == 0 and self.player_movement_x == 0) or self.player_movement_y == 16:
             self.falling = False
             if self.direction_of_movement == "left":
                 self.actual_image = main_img.stand_left

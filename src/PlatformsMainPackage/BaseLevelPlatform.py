@@ -6,6 +6,7 @@ from src.PlatformsMainPackage.LifeController import LifeController
 from src.PlatformsMainPackage.EnemyClass import EnemyClass
 from src.PlatformsMainPackage.MainItem import MainItem
 from src.PlatformsMainPackage.TransportPlatforms import TransportPlatforms
+from  src.PlatformsMainPackage.MapStaticElements import MapStaticElements
 import src.MainImages as main_img
 
 """
@@ -38,6 +39,7 @@ class BaseLevelPlatform(DrawBackground):
         self.gun = None
         self.items()
         self.finish_platform = None
+        self.portal = None
         self.is_done = False
 
     def items(self):
@@ -49,6 +51,15 @@ class BaseLevelPlatform(DrawBackground):
         self.gun.rect.x = 600
         self.gun.rect.y = 600
         self.player.set_of_items.add(self.gun)
+
+    def generate_portal(self):
+        number_of_platform = len(self.set_of_platforms)
+        print(number_of_platform)
+        tmp_platform = list(self.set_of_platforms)
+        last_platform = tmp_platform[number_of_platform - 1]
+        print(last_platform.rect)
+        self.portal = MapStaticElements(main_img.portal, last_platform.rect[0], last_platform.rect[1],
+                                        last_platform.rect[2], last_platform.rect[3])
 
     def generate_enemies_on_platforms(self, platform, life):
         """
@@ -108,10 +119,9 @@ class BaseLevelPlatform(DrawBackground):
         metoda sprawdzająca kolizje gracza z ostatnią platformą, która jest punktem zakończenia danego levelu
         :return: None
         """
-        if (self.player.rect.bottom == self.finish_platform.rect.top) and \
-                (self.player.rect.right >= self.finish_platform.rect.left) and \
-                (self.player.rect.right <= self.finish_platform.rect.right):
-            # print("koniec " + str(self.is_done))
+        if (self.player.rect.right >= self.portal.rect.left and self.player.rect.left <= self.portal.rect.right) and \
+                (self.player.rect.top <= self.portal.rect.bottom and self.player.rect.bottom >= self.portal.rect.top):
+            print("koniec " + str(self.is_done))
             self.is_done = True
 
     def update(self):
@@ -151,6 +161,7 @@ class BaseLevelPlatform(DrawBackground):
         for transport in self.set_of_transport_platforms:
             transport.set_direction()
             transport.draw(self.board)
+        self.portal.draw(self.board)
         self.player.draw(self.board)
         self.player.update_images()
         self.life.draw_player_life(self.board)
@@ -215,7 +226,7 @@ class BaseLevelPlatform(DrawBackground):
 
     def move_platform(self, direction):
         """
-        metoda dzięki której platformy poruszają się adekwatnie do ruchu gracza
+        metoda dzięki której platformy poruszają się adekwatnie do ruchu gracza, oraz portali
         :param direction: kierunek poruszania się platform [góra/dół/lewo/prawo]
         :type direction: string
         :return: None
@@ -227,6 +238,7 @@ class BaseLevelPlatform(DrawBackground):
                 enemy.move_enemy(-1 * main_img.SPEED_PLATFORM_X)
             for transport in self.set_of_transport_platforms:
                 transport.move_platform_x(-1 * main_img.SPEED_PLATFORM_X)
+            self.portal.move_element(-1 * main_img.SPEED_PLATFORM_X)
         if direction == 'left':
             for simple_p in self.set_of_platforms:
                 simple_p.move_platform_x(main_img.SPEED_PLATFORM_X)
@@ -234,6 +246,7 @@ class BaseLevelPlatform(DrawBackground):
                 enemy.move_enemy(main_img.SPEED_PLATFORM_X)
             for transport in self.set_of_transport_platforms:
                 transport.move_platform_x(main_img.SPEED_PLATFORM_X)
+            self.portal.move_element(main_img.SPEED_PLATFORM_X)
         if direction == 'up':
             for simple_p in self.set_of_platforms:
                 simple_p.move_platform_y(main_img.SPEED_PLATFORM_Y * 2)

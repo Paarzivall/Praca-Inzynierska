@@ -33,6 +33,7 @@ class ExampleLvl(BaseLevelPlatform):
                 else:
                     continue
             self.set_of_platforms.add(platform)
+        self.generate_portal()
 
         for transport, parametry in enumerate(transport_platforms):
             platform = TransportPlatforms(*parametry)
