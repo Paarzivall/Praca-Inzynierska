@@ -5,7 +5,7 @@ from src.PlatformsMainPackage.Player import Player
 from src.PlatformsMainPackage.LifeController import LifeController
 from src.PlatformsMainPackage.EnemyClass import EnemyClass
 from src.PlatformsMainPackage.MainItem import MainItem
-from src.PlatformsMainPackage.TransportPlatforms import TransportPlatforms
+from src.PlatformsMainPackage.CeilingClass import CeilingClass
 from  src.PlatformsMainPackage.MapStaticElements import MapStaticElements
 import src.MainImages as main_img
 
@@ -35,11 +35,13 @@ class BaseLevelPlatform(DrawBackground):
         self.life = LifeController.get_instance()
         self.reset_map = self.life.player_life
         self.min_y = 0
+        self.len_of_level = 0
         self.enemy = set()
         self.gun = None
         self.items()
         self.finish_platform = None
         self.portal = None
+        self.ceiling = set()
         self.is_done = False
 
     def items(self):
@@ -54,12 +56,11 @@ class BaseLevelPlatform(DrawBackground):
 
     def generate_portal(self):
         number_of_platform = len(self.set_of_platforms)
-        print(number_of_platform)
+        # print(number_of_platform)
         tmp_platform = list(self.set_of_platforms)
         last_platform = tmp_platform[number_of_platform - 1]
-        print(last_platform.rect)
-        self.portal = MapStaticElements(main_img.portal, last_platform.rect[0], last_platform.rect[1],
-                                        last_platform.rect[2], last_platform.rect[3])
+        # print(last_platform.rect.right, last_platform.rect.top)
+        self.portal = MapStaticElements(main_img.portal, last_platform.rect.right - 300, last_platform.rect.top)
 
     def generate_enemies_on_platforms(self, platform, life):
         """
@@ -86,6 +87,17 @@ class BaseLevelPlatform(DrawBackground):
                 self.min_y = platform[3]
         self.player.min_y = self.min_y
 
+    def calculate_len_of_ceiling(self, list_of_platforms):
+        self.len_of_level = list_of_platforms[0][0] + list_of_platforms[0][2]
+        for platform in list_of_platforms:
+            tmp = platform[0] + platform[2]
+            if tmp > self.len_of_level:
+                self.len_of_level = tmp
+
+    def create_ceiling(self, list_of_ceiling):
+        for ceiling in list_of_ceiling:
+            self.ceiling.add(CeilingClass(*ceiling))
+
     def kill_enemy(self):
         """
         metoda służąca "uśmiercaniu przeciwników": jeżeli nastąpi kolizja pocisku z hitboxem przeciwnika, to przeciwnik
@@ -94,9 +106,9 @@ class BaseLevelPlatform(DrawBackground):
         """
         for enemy in self.enemy:
             for bullet in self.player.set_of_bullets:
-                if (bullet.rect.center[1] + 55 >= enemy.start_y + 30) and \
-                        (bullet.rect.center[1] + 55 <= enemy.start_y + 130) and \
-                        (bullet.rect.center[0] <= enemy.start_x - 10 or bullet.rect.center[0] >= enemy.start_x + 10):
+                if (bullet.rect.center[0] >= enemy.rect.center[0] - 10) and \
+                        (bullet.rect.center[0] <= enemy.rect.center[0] + 10) and \
+                        (bullet.rect.center[1] >= enemy.start_y - 55) and (bullet.rect.center[1] <= enemy.start_y + 55):
                     if enemy.life > 0:
                         enemy.life -= 1
                     else:
@@ -121,7 +133,7 @@ class BaseLevelPlatform(DrawBackground):
         """
         if (self.player.rect.right >= self.portal.rect.left and self.player.rect.left <= self.portal.rect.right) and \
                 (self.player.rect.top <= self.portal.rect.bottom and self.player.rect.bottom >= self.portal.rect.top):
-            print("koniec " + str(self.is_done))
+            # print("koniec " + str(self.is_done))
             self.is_done = True
 
     def update(self):
@@ -161,11 +173,14 @@ class BaseLevelPlatform(DrawBackground):
         for transport in self.set_of_transport_platforms:
             transport.set_direction()
             transport.draw(self.board)
+        for ceiling in self.ceiling:
+            ceiling.draw(self.board)
         self.portal.draw(self.board)
         self.player.draw(self.board)
         self.player.update_images()
         self.life.draw_player_life(self.board)
         self.gun.draw_item(self.board)
+        # print(self.is_done)
 
     def run(self):
         """
@@ -223,6 +238,7 @@ class BaseLevelPlatform(DrawBackground):
             for transport in self.set_of_transport_platforms:
                 transport.set_to_start_position()
             self.set_to_start_position(self.b_x, self.b_y)
+            self.portal.set_to_start_position()
 
     def move_platform(self, direction):
         """
@@ -238,6 +254,8 @@ class BaseLevelPlatform(DrawBackground):
                 enemy.move_enemy(-1 * main_img.SPEED_PLATFORM_X)
             for transport in self.set_of_transport_platforms:
                 transport.move_platform_x(-1 * main_img.SPEED_PLATFORM_X)
+            for ceiling in self.ceiling:
+                ceiling.move_ceiling_x(-1 * main_img.SPEED_PLATFORM_X)
             self.portal.move_element(-1 * main_img.SPEED_PLATFORM_X)
         if direction == 'left':
             for simple_p in self.set_of_platforms:
@@ -246,6 +264,8 @@ class BaseLevelPlatform(DrawBackground):
                 enemy.move_enemy(main_img.SPEED_PLATFORM_X)
             for transport in self.set_of_transport_platforms:
                 transport.move_platform_x(main_img.SPEED_PLATFORM_X)
+            for ceiling in self.ceiling:
+                ceiling.move_ceiling_x(main_img.SPEED_PLATFORM_X)
             self.portal.move_element(main_img.SPEED_PLATFORM_X)
         if direction == 'up':
             for simple_p in self.set_of_platforms:

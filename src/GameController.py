@@ -30,9 +30,11 @@ class GameController(object):
         player.level = lvl_platform
         lvl_platform.update()
         lvl_platform.run()
-                #if lvl_platform.is_done:
-                 #   self.current_level = 3
-                  #  break
+        while True:
+            print(lvl_platform.is_done)
+            if lvl_platform.is_done:
+                import sys
+                sys.exit()
 
 
 if __name__ == '__main__':

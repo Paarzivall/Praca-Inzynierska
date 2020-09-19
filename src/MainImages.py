@@ -122,3 +122,8 @@ gun = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'shotgun.png
 
 # Portal pod koniec rundy
 portal = resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'finish_portal.png')))
+
+# Sufit
+ceiling_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top_L.png'))
+ceiling_center = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top.png'))
+ceiling_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top_R.png'))

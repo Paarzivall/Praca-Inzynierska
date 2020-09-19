@@ -18,9 +18,13 @@ class ExampleLvl(BaseLevelPlatform):
                           [420, 70, 750, 350],
                           [980, 0, 1600, main_img.HEIGHT - 170]]
         platform_for_enemies = [1]
-        transport_platforms = [[280, 0, 1400, 100]]
+        transport_platforms = [[280, 0, 1400, 210]]
         finish_platform = 2
         self.calculate_min_y_of_platforms(list_platforms)
+        self.calculate_len_of_ceiling(list_platforms)
+        # list_of_ceiling = [[0, self.len_of_level, -100, -10]]
+        list_of_ceiling = [[self.len_of_level + 700, 0, 0, -10]]
+        self.create_ceiling(list_of_ceiling)
 
         for nr_platformy, parametry in enumerate(list_platforms):
             platform = Platforms(*parametry)

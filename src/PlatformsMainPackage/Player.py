@@ -172,8 +172,6 @@ class Player(pygame.sprite.Sprite):
         metoda do aktualizowania obrazów, sprawdzania kolizji z platformami etc
         :return: None
         """
-
-        print(self.player_movement_y)
         self.falling = False
         self._gravity()
         self.rect[0] += self.player_movement_x
@@ -203,6 +201,14 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = col.rect.bottom
             if self.player_movement_y > 0:
                 self.rect.bottom = col.rect.top
+
+        collisions = pygame.sprite.spritecollide(self, self.level.ceiling, False)
+        for col in collisions:
+            if self.player_movement_y < 0:
+                self.rect.top = col.rect.bottom
+            if self.player_movement_y > 0:
+                self.rect.bottom = col.rect.top
+            self.player_movement_y = 0
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:

@@ -1,4 +1,3 @@
-import pygame
 import src.MainImages as main_img
 from src.PlatformsMainPackage.Platforms import Platforms
 
@@ -18,7 +17,7 @@ class TransportPlatforms(Platforms):
     def set_direction(self):
         if self.rect.top == main_img.HEIGHT - 170:
             self.direction = 'top'
-        elif self.rect.bottom == 0:
+        elif self.rect.top == 200:
             self.direction = 'bottom'
 
     def draw(self, surface):

@@ -10,7 +10,6 @@ class Platforms(pygame.sprite.Sprite):
 
     def __init__(self, width, height, rect_x, rect_y):
         """
-
         :params: współrzędne opisujące położenie danej platformy
         :type: int
         """
