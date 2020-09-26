@@ -1,5 +1,7 @@
 import pygame
 import src.MainImages as main_img
+from src.PlatformsMainPackage.BulletClass import BulletClass
+
 
 """
 Główna klasa Przeciwników, która definiuje ich zachowania, położenie etc.
@@ -7,7 +9,7 @@ Główna klasa Przeciwników, która definiuje ich zachowania, położenie etc.
 
 
 class EnemyClass(pygame.sprite.Sprite):
-    def __init__(self, start_img, life, platform):
+    def __init__(self, start_img, life, platform, type_of_enemy):
         """
 
         :param start_img: obraz od którego będzie rysowana animacja na ekranie
@@ -19,11 +21,14 @@ class EnemyClass(pygame.sprite.Sprite):
         """
         super().__init__()
         self.image = start_img
+        self.type_of_enemy = type_of_enemy
         self.life = life
         self.images_left = main_img.enemy_images_left
         self.images_right = main_img.enemy_images_right
+        self.set_of_bullet_enemy = pygame.sprite.Group()
         self.rect = self.image.get_rect()
         self._count = 0
+        self.shoot_count = 0
         self.enemy_movement_x = 1
         self.enemy_movement_y = 0
         self.platform = platform
@@ -32,6 +37,23 @@ class EnemyClass(pygame.sprite.Sprite):
         self.start_x = self.rect.x + 10
         self.start_y = self.platform.rect.y - 110
         self.angle = 0
+        self.shoot_speed = 0
+        self.set_shoot_speed()
+
+    def enemy_shoot(self):
+        if self.type_of_enemy > 1:
+            if self.enemy_movement_x > 0:
+                self.set_of_bullet_enemy.add(BulletClass(main_img.bullet_right, 'right',
+                                                         (self.rect.x, self.platform.rect.y - 60 - self.enemy_movement_y)))
+            else:
+                self.set_of_bullet_enemy.add(BulletClass(main_img.bullet_left, 'left',
+                                                         (self.rect.x, self.platform.rect.y - 60 - self.enemy_movement_y)))
+
+    def set_shoot_speed(self):
+        if self.type_of_enemy == 1:
+            self.shoot_speed = 150
+        elif self.type_of_enemy == 2:
+            self.shoot_speed = 90
 
     def draw_enemy(self, board):
         """
@@ -85,6 +107,14 @@ class EnemyClass(pygame.sprite.Sprite):
             else:
                 self.image = main_img.enemy_stand_right
             self._count += 1
+            if self.type_of_enemy == 2:
+                # print(len(self.set_of_bullet_enemy))
+                if 0 <= self.shoot_count <= self.shoot_speed:
+                    if self.shoot_count == 10:
+                        self.enemy_shoot()
+                    self.shoot_count += 1
+                else:
+                    self.shoot_count = 0
         else:
             if self.enemy_movement_x >= 0:
                 self.image = main_img.enemy_dead_right

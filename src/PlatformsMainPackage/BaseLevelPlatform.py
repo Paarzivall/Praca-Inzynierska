@@ -55,14 +55,9 @@ class BaseLevelPlatform(DrawBackground):
         self.player.set_of_items.add(self.gun)
 
     def generate_portal(self):
-        number_of_platform = len(self.set_of_platforms)
-        # print(number_of_platform)
-        tmp_platform = list(self.set_of_platforms)
-        last_platform = tmp_platform[number_of_platform - 1]
-        # print(last_platform.rect.right, last_platform.rect.top)
-        self.portal = MapStaticElements(main_img.portal, last_platform.rect.right - 300, last_platform.rect.top)
+        self.portal = MapStaticElements(main_img.portal, self.portal.rect.right - 300, self.portal.rect.top)
 
-    def generate_enemies_on_platforms(self, platform, life):
+    def generate_enemies_on_platforms(self, platform, life, type_of_enemy):
         """
         metoda dzięki której generowani są przeciwnicy na danej planszy
         :param platform: platforma na której ma się znajdować przeciwnik
@@ -71,7 +66,7 @@ class BaseLevelPlatform(DrawBackground):
         :type life: int
         :return:
         """
-        self.enemy.add(EnemyClass(main_img.enemy_stand_right, life, platform))
+        self.enemy.add(EnemyClass(main_img.enemy_stand_right, life, platform, type_of_enemy))
 
     def calculate_min_y_of_platforms(self, list_of_platforms):
         """
@@ -151,6 +146,9 @@ class BaseLevelPlatform(DrawBackground):
             enemy.enemy_update()
         for bullet in self.player.set_of_bullets:
             bullet.update_bullet()
+        for enemy in self.enemy:
+            for bullet in enemy.set_of_bullet_enemy:
+                bullet.update_bullet()
         for transport in self.set_of_transport_platforms:
             transport.update_transport_platform()
         self.gun.update_item(self.player.rect.center)
@@ -170,6 +168,9 @@ class BaseLevelPlatform(DrawBackground):
             enemy.draw_enemy(self.board)
         for bullet in self.player.set_of_bullets:
             bullet.draw(self.board)
+        for enemy in self.enemy:
+            for bullet in enemy.set_of_bullet_enemy:
+                bullet.draw(self.board)
         for transport in self.set_of_transport_platforms:
             transport.set_direction()
             transport.draw(self.board)

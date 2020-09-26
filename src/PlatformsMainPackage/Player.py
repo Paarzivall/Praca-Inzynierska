@@ -167,6 +167,16 @@ class Player(pygame.sprite.Sprite):
                 self.life.del_life(1)
                 self.rect.y -= 150
 
+    def enemy_bullet_collide(self):
+        for enemy in self.level.enemy:
+            for nr, bullet in enumerate(enemy.set_of_bullet_enemy):
+                # print(nr, self.rect.center[0], bullet.rect.center[0], self.rect.center[1] + 55, enemy.start_y + 110)
+                if self.rect.left <= bullet.rect.center[0] <= self.rect.right and \
+                        self.rect.center[1] + 55 == enemy.start_y + 110:
+                    self.life.del_life(1)
+                    self.rect.y -= 150
+                    # print(bullet.rect.center)
+
     def update_images(self):
         """
         metoda do aktualizowania obrazów, sprawdzania kolizji z platformami etc
@@ -252,6 +262,7 @@ class Player(pygame.sprite.Sprite):
             self.life.del_life(1)
             self.reset_level()
         self.enemy_collide()
+        self.enemy_bullet_collide()
         self.pick_up()
 
     def reset_level(self):

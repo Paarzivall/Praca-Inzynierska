@@ -11,7 +11,7 @@ jednakże zarządzająca również poruszaniem się przeciwnika
 
 
 class PlatformsWithEnemies(Platforms):
-    def __init__(self,  width, height, rect_x, rect_y, start_enemy_img, life=1):
+    def __init__(self,  width, height, rect_x, rect_y, start_enemy_img, life=1, type_of_enemy=1):
         """
 
         :param width: pozycja platformy
@@ -28,7 +28,7 @@ class PlatformsWithEnemies(Platforms):
         :type life: int
         """
         super().__init__(width, height, rect_x, rect_y)
-        self.enemy = EnemyClass(start_enemy_img, life, self.rect)
+        self.enemy = EnemyClass(start_enemy_img, life, self.rect, type_of_enemy)
         self.rect.bottom = self.rect.bottom
         self.rect.center = (self.rect.x + random.randint(0, self.width), self.rect.y)
 

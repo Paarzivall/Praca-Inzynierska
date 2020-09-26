@@ -127,3 +127,8 @@ portal = resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'f
 ceiling_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top_L.png'))
 ceiling_center = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top.png'))
 ceiling_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top_R.png'))
+
+
+
+# Przerywniki Leveli
+break_1 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))
