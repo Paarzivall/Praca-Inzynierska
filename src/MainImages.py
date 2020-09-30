@@ -128,7 +128,8 @@ ceiling_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wa
 ceiling_center = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top.png'))
 ceiling_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top_R.png'))
 
-
+# Pergaminy ze wskazówkami
+icon = resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'pergamin_ikona.png'))))))
 
 # Przerywniki Leveli
 break_1 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))

@@ -62,6 +62,7 @@ class EnemyClass(pygame.sprite.Sprite):
         :type board: pygame surface
         :return: None
         """
+        # if self.life > 0: # jeżeli obraz potwora ma znikać
         if self.platform.rect.x >= self.rect.x:
             self.enemy_movement_x *= -1
         elif self.platform.rect.x + self.platform.width - 70 <= self.rect.x:

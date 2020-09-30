@@ -3,7 +3,9 @@ import pygame
 from src.Level1.Level_1_Main import Level_1_Main
 from src.ExampleLevels.ExampleLvl import ExampleLvl
 from src.PlatformsMainPackage.Player import Player
+from src.BreakingClass import BreakingClass
 import src.MainImages as main_img
+import time, sys
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'  # centrowanie okna
 pygame.init()
@@ -28,13 +30,15 @@ class GameController(object):
         lvl_platform = ExampleLvl(player)
         player.rect.center = lvl_platform.get_surface().get_rect().center
         player.level = lvl_platform
+        #if lvl_platform.is_done is False:
         lvl_platform.update()
         lvl_platform.run()
-        while True:
-            print(lvl_platform.is_done)
-            if lvl_platform.is_done:
-                import sys
-                sys.exit()
+        #else:
+         #           tmp = BreakingClass(main_img.break_1)
+          #          tmp.draw_window()
+           #         time.sleep(5)
+            #        sys.exit()
+
 
 
 if __name__ == '__main__':

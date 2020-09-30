@@ -29,7 +29,7 @@ class BulletClass(pygame.sprite.Sprite):
         :type board: pygame surface
         :return: None
         """
-        board.blit(self.bullet_image, (self.rect[0] + 70, self.rect[1] + 16))
+        board.blit(self.bullet_image, (self.rect[0] + 10, self.rect[1] + 16))
 
     def update_bullet(self):
         """

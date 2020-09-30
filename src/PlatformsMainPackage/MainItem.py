@@ -6,7 +6,7 @@ Klasa odpowiadająca różnym item'om w grze takim jak na przykłąd broń
 
 
 class MainItem(pygame.sprite.Sprite):
-    def __init__(self, item_image, name_of_item):
+    def __init__(self, item_image, name_of_item, platform, picked=True):
         """
 
         :param item_image: obraz przedmiotu
@@ -18,6 +18,12 @@ class MainItem(pygame.sprite.Sprite):
         self.item_image = item_image
         self.rect = self.item_image.get_rect()
         self.name_of_item = name_of_item
+        self.platform = platform
+        self.picked = picked
+
+    def draw_thumbnail(self, board):
+        if self.picked is True:
+            board.blit(self.item_image, (1200, 30))
 
     def draw_item(self, board):
         """
@@ -26,7 +32,8 @@ class MainItem(pygame.sprite.Sprite):
         :type board: pygame surface
         :return: None
         """
-        board.blit(self.item_image, (self.rect[0] + 20, self.rect[1] + 20))
+        if self.picked is False:
+            board.blit(self.item_image, (self.platform.rect.center[0], self.platform.rect.center[1] - 70))
 
     def update_item(self, rect_center):
         """

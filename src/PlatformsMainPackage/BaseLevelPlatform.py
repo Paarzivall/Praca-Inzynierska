@@ -37,22 +37,19 @@ class BaseLevelPlatform(DrawBackground):
         self.min_y = 0
         self.len_of_level = 0
         self.enemy = set()
-        self.gun = None
-        self.items()
+        self.platform_with_tip = None
+        self.tip = None
         self.finish_platform = None
         self.portal = None
         self.ceiling = set()
         self.is_done = False
 
-    def items(self):
+    def items(self, platform):
         """
         metoda tworząca item (broń gracza) na planszy
         :return: None
         """
-        self.gun = MainItem(main_img.gun, "GUN")
-        self.gun.rect.x = 600
-        self.gun.rect.y = 600
-        self.player.set_of_items.add(self.gun)
+        self.tip = MainItem(main_img.icon, 'Tip', platform, False)
 
     def generate_portal(self):
         self.portal = MapStaticElements(main_img.portal, self.portal.rect.right - 300, self.portal.rect.top)
@@ -101,13 +98,18 @@ class BaseLevelPlatform(DrawBackground):
         """
         for enemy in self.enemy:
             for bullet in self.player.set_of_bullets:
-                if (bullet.rect.center[0] >= enemy.rect.center[0] - 10) and \
-                        (bullet.rect.center[0] <= enemy.rect.center[0] + 10) and \
+                if enemy.rect.center[0] - 10 <= bullet.rect.center[0] < enemy.rect.center[0] + 10 and \
                         (bullet.rect.center[1] >= enemy.start_y - 55) and (bullet.rect.center[1] <= enemy.start_y + 55):
                     if enemy.life > 0:
                         enemy.life -= 1
+                        self.destroy_collide_with_enemy_bullet(bullet)
                     else:
                         enemy.life = 0
+
+    def destroy_collide_with_enemy_bullet(self, bullet):
+        for shot in self.player.set_of_bullets:
+            if shot == bullet:
+                self.player.set_of_bullets.remove(shot)
 
     def _destroy_bullet(self):
         """
@@ -151,7 +153,6 @@ class BaseLevelPlatform(DrawBackground):
                 bullet.update_bullet()
         for transport in self.set_of_transport_platforms:
             transport.update_transport_platform()
-        self.gun.update_item(self.player.rect.center)
         self.kill_enemy()
         self._destroy_bullet()
         self.is_finish()
@@ -176,11 +177,12 @@ class BaseLevelPlatform(DrawBackground):
             transport.draw(self.board)
         for ceiling in self.ceiling:
             ceiling.draw(self.board)
+        self.tip.draw_item(self.board)
         self.portal.draw(self.board)
         self.player.draw(self.board)
         self.player.update_images()
         self.life.draw_player_life(self.board)
-        self.gun.draw_item(self.board)
+        self.tip.draw_thumbnail(self.board)
         # print(self.is_done)
 
     def run(self):

@@ -113,10 +113,15 @@ class Player(pygame.sprite.Sprite):
         metoda służąca za akcje podnoszenia "item'ów", takich jak broń.
         :return: None
         """
-        for item in self.set_of_items:
+        """for item in self.set_of_items:
             if item.rect.colliderect(self.rect):
                 self.items.add(item.name_of_item)
-                self.set_of_items.remove(item)
+                self.set_of_items.remove(item)"""
+        if self.level.platform_with_tip.rect.center[0] - 20 >= self.rect.left and \
+                self.level.platform_with_tip.rect.center[0] + 20 <= self.rect.right and \
+                (self.level.platform_with_tip.rect.center[1] == self.rect.bottom or
+                 self.level.platform_with_tip.rect.center[1] - 35 == self.rect.bottom):
+            self.level.tip.picked = True
 
     def shot(self, event):
         """
@@ -125,13 +130,15 @@ class Player(pygame.sprite.Sprite):
         :param event: zbiór eventów wykrytych przez pygame
         :return: None
         """
-        if self.items.__len__() > 0:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    if self.direction_of_movement == 'right':
-                        self.set_of_bullets.add(BulletClass(main_img.bullet_right, self.direction_of_movement, self.rect.center))
-                    if self.direction_of_movement == 'left':
-                        self.set_of_bullets.add(BulletClass(main_img.bullet_left, self.direction_of_movement, self.rect.center))
+        #if self.items.__len__() > 0:
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                if self.direction_of_movement == 'right':
+                    self.set_of_bullets.add(BulletClass(main_img.bullet_right,
+                                                        self.direction_of_movement, self.rect.center))
+                if self.direction_of_movement == 'left':
+                    self.set_of_bullets.add(BulletClass(main_img.bullet_left,
+                                                        self.direction_of_movement, self.rect.center))
 
     def get_event(self, event):
         """
