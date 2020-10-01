@@ -113,15 +113,23 @@ class Player(pygame.sprite.Sprite):
         metoda służąca za akcje podnoszenia "item'ów", takich jak broń.
         :return: None
         """
-        """for item in self.set_of_items:
-            if item.rect.colliderect(self.rect):
-                self.items.add(item.name_of_item)
-                self.set_of_items.remove(item)"""
-        if self.level.platform_with_tip.rect.center[0] - 20 >= self.rect.left and \
-                self.level.platform_with_tip.rect.center[0] + 20 <= self.rect.right and \
-                (self.level.platform_with_tip.rect.center[1] == self.rect.bottom or
-                 self.level.platform_with_tip.rect.center[1] - 35 == self.rect.bottom):
-            self.level.tip.picked = True
+        for item in self.level.dict_of_items:
+            if self.level.dict_of_items[item].rect.center[0] - 20 >= self.rect.left and \
+                    self.level.dict_of_items[item].rect.center[0] + 20 <= self.rect.right and \
+                    (self.level.dict_of_items[item].rect.center[1] == self.rect.bottom or
+                     self.level.dict_of_items[item].rect.center[1] - 35 == self.rect.bottom):
+                if item == "potion_max_life":
+                    if self.life.player_life < 3:
+                        self.level.potion.picked = True
+                        self.life.set_life_to_default()
+                        self.level.reset_map = self.life.player_life
+                elif item == 'tip':
+                    self.level.tip.picked = True
+                elif item == 'heart':
+                    if self.level.heart.picked is False:
+                        self.level.heart.picked = True
+                        self.life.add_life(1)
+                        self.level.reset_map = self.life.player_life
 
     def shot(self, event):
         """
@@ -172,17 +180,15 @@ class Player(pygame.sprite.Sprite):
             if self.rect.center[1] + 55 == enemy.start_y + 110 and (self.rect.right == enemy.rect.right - 50 or
                                                                     self.rect.left == enemy.rect.left - 50):
                 self.life.del_life(1)
-                self.rect.y -= 150
+                # self.rect.y -= 150
 
     def enemy_bullet_collide(self):
         for enemy in self.level.enemy:
             for nr, bullet in enumerate(enemy.set_of_bullet_enemy):
-                # print(nr, self.rect.center[0], bullet.rect.center[0], self.rect.center[1] + 55, enemy.start_y + 110)
                 if self.rect.left <= bullet.rect.center[0] <= self.rect.right and \
                         self.rect.center[1] + 55 == enemy.start_y + 110:
                     self.life.del_life(1)
                     self.rect.y -= 150
-                    # print(bullet.rect.center)
 
     def update_images(self):
         """

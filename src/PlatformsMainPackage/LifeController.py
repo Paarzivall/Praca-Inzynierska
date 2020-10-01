@@ -27,15 +27,19 @@ class LifeController(object):
         """
         if LifeController._instance is None:
             self.player_life = player_life
+            self.default_player_life_counter = player_life
             self.player_life_position = [30, 30]
         LifeController._instance = self
 
-    def add_life(self):
+    def set_life_to_default(self):
+        self.player_life = self.default_player_life_counter
+
+    def add_life(self, plus):
         """
         metoda dzięki której wywołaniu gracz dostanie dodatkowe życie
         :return: None
         """
-        self.player_life += 1
+        self.player_life += plus
 
     def del_life(self, minus=1):
         """

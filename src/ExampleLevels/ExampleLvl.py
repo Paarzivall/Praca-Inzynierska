@@ -22,17 +22,23 @@ class ExampleLvl(BaseLevelPlatform):
         platform_for_enemies = [1]
         transport_platforms = [[280, 0, 1400, 210]]
         finish_platform = 2
+        dict_with_items = {}
         self.calculate_min_y_of_platforms(list_platforms)
         self.calculate_len_of_ceiling(list_platforms)
         # list_of_ceiling = [[0, self.len_of_level, -100, -10]]
         list_of_ceiling = [[self.len_of_level + 700, 0, 0, -10]]
         self.create_ceiling(list_of_ceiling)
         self.platform_with_tip = random.randint(0, len(list_platforms))
+        self.platform_with_potion = random.randint(0, len(list_platforms))
+        self.platforms_with_heart = random.randint(0, len(list_platforms))
         for nr_platformy, parametry in enumerate(list_platforms):
             platform = Platforms(*parametry)
             if self.platform_with_tip == nr_platformy:
-                self.items(platform)
-                self.platform_with_tip = platform
+                dict_with_items['tip'] = platform
+            if self.platform_with_potion == nr_platformy:
+                dict_with_items['potion_max_life'] = platform
+            if self.platforms_with_heart == nr_platformy:
+                dict_with_items['heart'] = platform
             if finish_platform == nr_platformy:
                 self.finish_platform = platform
                 self.portal = platform
@@ -44,6 +50,7 @@ class ExampleLvl(BaseLevelPlatform):
                     continue
             self.set_of_platforms.add(platform)
         self.generate_portal()
+        self.generate_items_on_map(dict_with_items)
 
         for transport, parametry in enumerate(transport_platforms):
             platform = TransportPlatforms(*parametry)

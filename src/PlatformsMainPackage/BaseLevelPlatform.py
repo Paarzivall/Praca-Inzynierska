@@ -37,19 +37,25 @@ class BaseLevelPlatform(DrawBackground):
         self.min_y = 0
         self.len_of_level = 0
         self.enemy = set()
-        self.platform_with_tip = None
         self.tip = None
+        self.heart = None
+        self.potion = None
+        self.dict_of_items = None
         self.finish_platform = None
         self.portal = None
         self.ceiling = set()
         self.is_done = False
+        self.action_button = False
 
-    def items(self, platform):
-        """
-        metoda tworząca item (broń gracza) na planszy
-        :return: None
-        """
-        self.tip = MainItem(main_img.icon, 'Tip', platform, False)
+    def generate_items_on_map(self, dict_of_items):
+        self.dict_of_items = dict_of_items
+        for item in dict_of_items:
+            if item == 'tip':
+                self.tip = MainItem(main_img.icon, 'Tip', dict_of_items[item], False)
+            elif item == 'potion_max_life':
+                self.potion = MainItem(main_img.potion_max_life, 'PotionMaxLife', dict_of_items[item], False)
+            elif item == 'heart':
+                self.heart = MainItem(main_img.heart, 'Heart', dict_of_items[item], False)
 
     def generate_portal(self):
         self.portal = MapStaticElements(main_img.portal, self.portal.rect.right - 300, self.portal.rect.top)
@@ -178,12 +184,16 @@ class BaseLevelPlatform(DrawBackground):
         for ceiling in self.ceiling:
             ceiling.draw(self.board)
         self.tip.draw_item(self.board)
+        if self.potion is not None:
+            self.potion.draw_item(self.board)
+        if self.heart is not None:
+            self.heart.draw_item(self.board)
         self.portal.draw(self.board)
         self.player.draw(self.board)
         self.player.update_images()
         self.life.draw_player_life(self.board)
         self.tip.draw_thumbnail(self.board)
-        # print(self.is_done)
+        self.tip.draw_tip_full_screen(self.action_button, self.board)
 
     def run(self):
         """
@@ -209,13 +219,15 @@ class BaseLevelPlatform(DrawBackground):
                 return True
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_TAB:
-                    print("HELPER")
+                    self.action_button = True
                 elif event.key == pygame.K_w or event.key == pygame.K_UP:
                     self.add_y_position(2)
                     self.move_platform('up')
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_w:
                     self.add_y_position(-1)
+                if event.key == pygame.K_TAB:
+                    self.action_button = False
             self.player.get_event(event)
             self.player.shot(event)
 

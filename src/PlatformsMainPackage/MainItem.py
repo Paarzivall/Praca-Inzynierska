@@ -1,4 +1,5 @@
 import pygame
+import src.MainImages as main_img
 
 """
 Klasa odpowiadająca różnym item'om w grze takim jak na przykłąd broń
@@ -43,3 +44,11 @@ class MainItem(pygame.sprite.Sprite):
         :return: None
         """
         self.rect.center = rect_center
+
+    def draw_tip_full_screen(self, action_button, board):
+        if self.name_of_item == 'Tip' and action_button is True:
+            if self.picked is False:
+                board.blit(main_img.pergamin, (600, 200))
+                board.blit(main_img.cenzura, (650, 300))
+            else:
+                board.blit(main_img.pergamin, (600, 200))
