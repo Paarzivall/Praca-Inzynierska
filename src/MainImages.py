@@ -24,44 +24,44 @@ if os.path.isdir('..\img'):
     path = "..\\"
 
 # otwieranie zamka
-first_background = resize(pygame.image.load(os.path.join(path + 'img\Level1', 'otwieranie_zamka.png')))
+first_background = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert', 'otwieranie_zamka.png')))
 
 # cyfry do 1 levelu
 
-zero = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '0a.png')))
-one = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '1a.png')))
-two = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '2.png')))
-three = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '3.png')))
-four = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '4.png')))
-five = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '5.png')))
-six = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '6.png')))
-seven = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '7.png')))
-eight = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '8.png')))
-nine = resize(pygame.image.load(os.path.join(path + 'img\Level1\Cyfry', '9.png')))
+zero = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '0a.png')))
+one = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '1a.png')))
+two = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '2.png')))
+three = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '3.png')))
+four = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '4.png')))
+five = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '5.png')))
+six = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '6.png')))
+seven = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '7.png')))
+eight = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '8.png')))
+nine = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '9.png')))
 
 numbers = {0: zero, 1: one, 2: two, 3: three, 4: four,
            5: five, 6: six, 7: seven, 8: eight, 9: nine}
 
 # piny do 1 lvl
 
-pin_0_up = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_1_gora.png')))
-pin_1_up = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_2_gora.png')))
-pin_2_up = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_3_gora.png')))
-pin_3_up = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_4_gora.png')))
-pin_4_up = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_5_gora.png')))
-pin_5_up = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_6_gora.png')))
-pin_6_up = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_7_gora.png')))
+pin_0_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_1_gora.png')))
+pin_1_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_2_gora.png')))
+pin_2_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_3_gora.png')))
+pin_3_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_4_gora.png')))
+pin_4_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_5_gora.png')))
+pin_5_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_6_gora.png')))
+pin_6_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_7_gora.png')))
 
 pins_up = {0: pin_0_up, 1: pin_1_up, 2: pin_2_up, 3: pin_3_up,
             4: pin_4_up, 5: pin_5_up, 6: pin_6_up}
 
-pin_0_down = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_1_dol.png')))
-pin_1_down = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_2_dol.png')))
-pin_2_down = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_3_dol.png')))
-pin_3_down = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_4_dol.png')))
-pin_4_down = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_5_dol.png')))
-pin_5_down = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_6_dol.png')))
-pin_6_down = resize(pygame.image.load(os.path.join(path + 'img\Level1\Bolce', 'bolec_7_dol.png')))
+pin_0_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_1_dol.png')))
+pin_1_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_2_dol.png')))
+pin_2_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_3_dol.png')))
+pin_3_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_4_dol.png')))
+pin_4_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_5_dol.png')))
+pin_5_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_6_dol.png')))
+pin_6_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_7_dol.png')))
 
 pins_down = {0: pin_0_down, 1: pin_1_down, 2: pin_2_down,
              3: pin_3_down, 4: pin_4_down, 5: pin_5_down, 6: pin_6_down}
@@ -136,3 +136,4 @@ potion_max_life = resize(resize(resize(pygame.image.load(os.path.join(path + 'im
 
 # Przerywniki Leveli
 break_1 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))
+break_2 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))

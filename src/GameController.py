@@ -19,26 +19,27 @@ class GameController(object):
         self.level_with_lives = {1: 'no', 2: 'yes'}
 
     def controller(self):
-        """lvl1 = Level_1_Main()
+        lvl1 = Level_1_Main()
         while True:
             if self.current_level == 1 and lvl1.is_done is False:
                 lvl1.run()
                 if lvl1.is_done:
                     self.current_level = 2
-            if self.current_level == 2:"""
-        player = Player(3, main_img.stand_right)
-        lvl_platform = ExampleLvl(player)
-        player.rect.center = lvl_platform.get_surface().get_rect().center
-        player.level = lvl_platform
-        #if lvl_platform.is_done is False:
-        lvl_platform.update()
-        lvl_platform.run()
-        #else:
-         #           tmp = BreakingClass(main_img.break_1)
-          #          tmp.draw_window()
-           #         time.sleep(5)
-            #        sys.exit()
-
+                    first_break = BreakingClass(main_img.break_1)
+                    first_break.run()
+            if self.current_level == 2 and first_break.is_done is True:
+                player = Player(3, main_img.stand_right)
+                lvl_platform = ExampleLvl(player)
+                player.rect.center = lvl_platform.get_surface().get_rect().center
+                player.level = lvl_platform
+                lvl_platform.update()
+                lvl_platform.run()
+                if lvl_platform.is_done:
+                    self.current_level = 3
+                    second_break = BreakingClass(main_img.break_2)
+                    second_break.run()
+                    if second_break.is_done:
+                        sys.exit()
 
 
 if __name__ == '__main__':
