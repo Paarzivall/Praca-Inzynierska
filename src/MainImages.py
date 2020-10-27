@@ -24,44 +24,44 @@ if os.path.isdir('..\img'):
     path = "..\\"
 
 # otwieranie zamka
-first_background = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert', 'otwieranie_zamka.png')))
+first_background = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert', 'otwieranie_zamka.png')))
 
 # cyfry do 1 levelu
 
-zero = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '0a.png')))
-one = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '1a.png')))
-two = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '2.png')))
-three = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '3.png')))
-four = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '4.png')))
-five = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '5.png')))
-six = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '6.png')))
-seven = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '7.png')))
-eight = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '8.png')))
-nine = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Cyfry', '9.png')))
+zero = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '0a.png')))
+one = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '1a.png')))
+two = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '2.png')))
+three = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '3.png')))
+four = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '4.png')))
+five = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '5.png')))
+six = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '6.png')))
+seven = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '7.png')))
+eight = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '8.png')))
+nine = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '9.png')))
 
 numbers = {0: zero, 1: one, 2: two, 3: three, 4: four,
            5: five, 6: six, 7: seven, 8: eight, 9: nine}
 
 # piny do 1 lvl
 
-pin_0_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_1_gora.png')))
-pin_1_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_2_gora.png')))
-pin_2_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_3_gora.png')))
-pin_3_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_4_gora.png')))
-pin_4_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_5_gora.png')))
-pin_5_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_6_gora.png')))
-pin_6_up = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_7_gora.png')))
+pin_0_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_1_gora.png')))
+pin_1_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_2_gora.png')))
+pin_2_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_3_gora.png')))
+pin_3_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_4_gora.png')))
+pin_4_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_5_gora.png')))
+pin_5_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_6_gora.png')))
+pin_6_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_7_gora.png')))
 
 pins_up = {0: pin_0_up, 1: pin_1_up, 2: pin_2_up, 3: pin_3_up,
             4: pin_4_up, 5: pin_5_up, 6: pin_6_up}
 
-pin_0_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_1_dol.png')))
-pin_1_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_2_dol.png')))
-pin_2_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_3_dol.png')))
-pin_3_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_4_dol.png')))
-pin_4_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_5_dol.png')))
-pin_5_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_6_dol.png')))
-pin_6_down = resize(pygame.image.load(os.path.join(path + 'img\BinaryConvert\Bolce', 'bolec_7_dol.png')))
+pin_0_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_1_dol.png')))
+pin_1_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_2_dol.png')))
+pin_2_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_3_dol.png')))
+pin_3_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_4_dol.png')))
+pin_4_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_5_dol.png')))
+pin_5_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_6_dol.png')))
+pin_6_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_7_dol.png')))
 
 pins_down = {0: pin_0_down, 1: pin_1_down, 2: pin_2_down,
              3: pin_3_down, 4: pin_4_down, 5: pin_5_down, 6: pin_6_down}
@@ -69,71 +69,97 @@ pins_down = {0: pin_0_down, 1: pin_1_down, 2: pin_2_down,
 # Platformowe Levele
 
 # platform_background = resize(pygame.image.load(os.path.join('img\Platforms_Levels', 'background.png')))
-platform_background2 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'new_img.jpg'))
+platform_background2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'new_img.jpg'))
 
 # Ruchy Postaci
 
-stand_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_standR.png'))
-walk_right1 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_walkR1.png'))
-walk_right2 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_walkR2.png'))
-stand_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_standL.png'))
-walk_left1 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_walkL1.png'))
-walk_left2 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_walkL2.png'))
-fail_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_fallL.png'))
-fail_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_fallR.png'))
-jump_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_jumpL.png'))
-jump_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'player_jumpR.png'))
+stand_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_standR.png'))
+walk_right1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_walkR1.png'))
+walk_right2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_walkR2.png'))
+stand_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_standL.png'))
+walk_left1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_walkL1.png'))
+walk_left2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_walkL2.png'))
+fail_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_fallL.png'))
+fail_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_fallR.png'))
+jump_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_jumpL.png'))
+jump_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'player_jumpR.png'))
 images_right = [walk_right1, walk_right2]
 images_left = [walk_left1, walk_left2]
 
-heart = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'heart.png'))
+heart = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'heart.png'))
 
 # Platformy
-platform_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'grass_L.png'))
-platform_center = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'grass_C.png'))
-platform_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'grass_R.png'))
-single_platform = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'grass_single.png'))
+platform_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'grass_L.png'))
+platform_center = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'grass_C.png'))
+platform_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'grass_R.png'))
+single_platform = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'grass_single.png'))
 platforms = [single_platform, platform_left, platform_center, platform_right]
 
-transport_platform_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'metal_L.png'))
-transport_platform_center = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'metal_C.png'))
-transport_platform_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'metal_R.png'))
-single_transport_platform = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'metal_single.png'))
+transport_platform_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_L.png'))
+transport_platform_center = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_C.png'))
+transport_platform_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_R.png'))
+single_transport_platform = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_single.png'))
 platforms = [single_transport_platform, transport_platform_left, transport_platform_center, transport_platform_right]
 
 # Przeciwnicy
-enemy_stand_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_standL.png'))
-enemy_stand_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_standL.png'))
-enemy_walk_right1 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_walkR1.png'))
-enemy_walk_right2 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_walkR2.png'))
-enemy_walk_left1 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_walkL1.png'))
-enemy_walk_left2 = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_walkL2.png'))
-enemy_dead_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_deadL.png'))
-enemy_dead_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'zombie_deadL.png'))
+enemy_stand_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_standL.png'))
+enemy_stand_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_standL.png'))
+enemy_walk_right1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkR1.png'))
+enemy_walk_right2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkR2.png'))
+enemy_walk_left1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkL1.png'))
+enemy_walk_left2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkL2.png'))
+enemy_dead_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_deadL.png'))
+enemy_dead_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_deadL.png'))
 
 enemy_images_right = [enemy_walk_right1, enemy_walk_right2]
 enemy_images_left = [enemy_walk_left1, enemy_walk_left2]
 
 # Pociski
-bullet_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'bullet_L.png'))
-bullet_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'bullet_R.png'))
+bullet_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'bullet_L.png'))
+bullet_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'bullet_R.png'))
 
-gun = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'shotgun.png'))
+gun = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'shotgun.png'))
 
 # Portal pod koniec rundy
-portal = resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'finish_portal.png')))
+portal = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'finish_portal.png')))
 
 # Sufit
-ceiling_left = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top_L.png'))
-ceiling_center = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top.png'))
-ceiling_right = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'wall_top_R.png'))
+ceiling_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top_L.png'))
+ceiling_center = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top.png'))
+ceiling_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top_R.png'))
 
 # itemy na mapie
-icon = resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'pergamin_ikona.png'))))))
-pergamin = pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'pergamin_ikona.png'))
-cenzura = resize(resize(resize(resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'cenzura.png')))))))))
-potion_max_life = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\Platforms_Levels', 'potion_max_life.png')))))
+icon = resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'pergamin_ikona.png'))))))
+pergamin = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'pergamin_ikona.png'))
+cenzura = resize(resize(resize(resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'cenzura.png')))))))))
+potion_max_life = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'potion_max_life.png')))))
 
 # Przerywniki Leveli
 break_1 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))
 break_2 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))
+
+
+# BUBBLE SORT
+#background
+bubble_background = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'mechanizm_szkic.png')))
+
+switch_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch.png')))
+switch_button_light = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_O_light.png')))
+next_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_R.png')))
+
+# cyfry
+image_0 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '0.png')))
+image_1 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '1.png')))
+image_2 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '2.png')))
+image_3 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '3.png')))
+image_4 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '4.png')))
+image_5 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '5.png')))
+image_6 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '6.png')))
+image_7 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '7.png')))
+image_8 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '8.png')))
+image_9 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '9.png')))
+
+numbers_image = {0: image_0, 1: image_1, 2: image_2, 3: image_3, 4: image_4,
+                 5: image_5, 6: image_6, 7: image_7, 8: image_8, 9: image_9}
+
+lock = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch.png')))

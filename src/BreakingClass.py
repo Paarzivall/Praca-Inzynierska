@@ -27,6 +27,6 @@ class BreakingClass(DrawBackground):
                 exit()
                 return True
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE or event.key == pygame.K_KP_ENTER:
+                if event.key == pygame.K_SPACE:
                     self.is_done = True
 

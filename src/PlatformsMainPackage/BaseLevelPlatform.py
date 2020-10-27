@@ -205,7 +205,7 @@ class BaseLevelPlatform(DrawBackground):
             self.update()
             pygame.display.flip()
             self.clock.tick(40)
-            print(self.is_done)
+            # print(self.is_done)
             if self.is_done:
                 break
 

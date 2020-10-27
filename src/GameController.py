@@ -5,7 +5,8 @@ from src.ExampleLevels.ExampleLvl import ExampleLvl
 from src.PlatformsMainPackage.Player import Player
 from src.BreakingClass import BreakingClass
 import src.MainImages as main_img
-import time, sys
+import sys
+from src.BubbleSortLevel.BubbleSortLevelMain import BubbleSortLevelMain
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'  # centrowanie okna
 pygame.init()
@@ -38,7 +39,16 @@ class GameController(object):
                     self.current_level = 3
                     second_break = BreakingClass(main_img.break_2)
                     second_break.run()
-                    if second_break.is_done:
+            if self.current_level == 3 and second_break.is_done:
+                bubble = BubbleSortLevelMain()
+                bubble.run()
+                print(bubble.is_done)
+                if bubble.is_done:
+                    print("DONE")
+                    self.current_level = 4
+                    third_break = BreakingClass(main_img.break_2)
+                    third_break.run()
+                    if third_break.is_done:
                         sys.exit()
 
 
