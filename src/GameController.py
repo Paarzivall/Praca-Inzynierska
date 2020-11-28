@@ -43,19 +43,20 @@ class GameController(object):
                     second_break.run()
             if self.current_level == 3 and second_break.is_done:
                 bubble = BubbleSortLevelMain()
-                bubble.run()
-                print(bubble.is_done)
-                if bubble.is_done:
-                    print("DONE")
+                if bubble.run():
                     self.current_level = 4
                     third_break = BreakingClass(main_img.break_2)
                     third_break.run()
-                    if third_break.is_done:
-                        sys.exit()
             if self.current_level == 4 and third_break.is_done:
-                print("hello")
-                ob = PlayFairMain()
-                ob.run()
+                playfair = PlayFairMain()
+                if playfair.run():
+                    self.current_level = 5
+                    fourth_break = BreakingClass(main_img.break_2)
+                    fourth_break.run()
+            if self.current_level == 5 and fourth_break.is_done:
+                sys.exit()
+
+
 
 
 if __name__ == '__main__':

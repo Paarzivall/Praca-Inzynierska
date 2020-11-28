@@ -23,6 +23,7 @@ class BubbleSortLevelMain(DrawBackground):
             self.draw()
             pygame.display.flip()
             self.clock.tick(10)
+        return True
 
     def handle_events(self):
         """Metoda pozwalająca zamknąć okienko"""
@@ -50,4 +51,4 @@ class BubbleSortLevelMain(DrawBackground):
                     if tmp_ev.collidepoint(event.pos):
                         if self.numbers.is_finish() is True:
                             self.is_done = True
-                            print("gotowe")
+                            return True

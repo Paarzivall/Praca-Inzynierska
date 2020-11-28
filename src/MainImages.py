@@ -21,8 +21,9 @@ MAX_BACKGROUND_X = 500"""
 
 path = ""
 if os.path.isdir('..\img'):
+    print("dupa")
     path = "..\\"
-print(os.getcwd())
+
 # otwieranie zamka
 first_background = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert', 'otwieranie_zamka.png')))
 
@@ -195,3 +196,11 @@ literaX = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaX
 literaY = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaY.png')))
 literaZ = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaZ.png')))
 
+letters = {'A': literaA, 'B': literaB, 'C': literaC, 'D': literaD, 'E': literaE, 'F': literaF,
+           'G': literaG, 'H': literaH, 'I': literaI, 'K': literaK, 'L': literaL, 'M': literaM,
+           'N': literaN, 'O': literaO, 'P': literaP, 'Q': literaQ, 'R': literaR, 'S': literaS,
+           'T': literaT, 'U': literaU, 'V': literaV, 'W': literaW, 'X': literaX, 'Y': literaY, 'Z': literaZ}
+
+try_open_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_O_light.png')))
+
+table = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'table.png')))))
