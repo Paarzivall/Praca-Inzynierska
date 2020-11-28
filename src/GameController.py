@@ -8,6 +8,8 @@ import src.MainImages as main_img
 import sys
 from src.BubbleSortLevel.BubbleSortLevelMain import BubbleSortLevelMain
 
+from src.PlayFair.PlayFairMain import PlayFairMain
+
 os.environ['SDL_VIDEO_CENTERED'] = '1'  # centrowanie okna
 pygame.init()
 
@@ -50,6 +52,10 @@ class GameController(object):
                     third_break.run()
                     if third_break.is_done:
                         sys.exit()
+            if self.current_level == 4 and third_break.is_done:
+                print("hello")
+                ob = PlayFairMain()
+                ob.run()
 
 
 if __name__ == '__main__':
