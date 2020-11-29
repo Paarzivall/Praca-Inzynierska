@@ -15,11 +15,17 @@ class CryptoOperationMain(object):
                               (70, 560), (120, 560), (170, 560), (220, 560), (270, 560),
                               (70, 620), (120, 620), (170, 620), (220, 620), (270, 620)]
         self.picked_word = self.pick_word()
-        self.key = self.pick_word()
+        self.key = self.pick_key()
         self.table = self.generate_table()
         self.output_text = self.coding()
         self.font = pygame.font.SysFont('Comic Sans MS', 30)
         print(self.output_text)
+
+    def pick_key(self):
+        key = self.pick_word()
+        while key == self.picked_word:
+            key = self.pick_word()
+        return key
 
     def pick_word(self):
         return random.choice(self.word_list)

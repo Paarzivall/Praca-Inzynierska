@@ -6,10 +6,8 @@ class CopyLetters(object):
         self.rect.x = positionX
         self.rect.y = positionY
 
-    def update_position(self, position, surface):
-        print("xsayd")
+    def update_position(self, position):
         self.rect.center = position
-        # self.draw_copy_letter(surface)
 
     def draw_copy_letter(self, surface):
         surface.blit(self.img, (self.rect.x, self.rect.y))

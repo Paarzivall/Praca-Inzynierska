@@ -22,7 +22,7 @@ class GameController(object):
         self.level_with_lives = {1: 'no', 2: 'yes'}
 
     def controller(self):
-        lvl1 = Level_1_Main()
+        """lvl1 = Level_1_Main()
         while True:
             if self.current_level == 1 and lvl1.is_done is False:
                 lvl1.run()
@@ -54,8 +54,9 @@ class GameController(object):
                     fourth_break = BreakingClass(main_img.break_2)
                     fourth_break.run()
             if self.current_level == 5 and fourth_break.is_done:
-                sys.exit()
-
+                sys.exit()"""
+        playfair = PlayFairMain()
+        playfair.run()
 
 
 

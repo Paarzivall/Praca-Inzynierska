@@ -44,9 +44,9 @@ class PlayFairMain(DrawBackground):
         if self.crypto.output_text == tmp:
             return True
 
-
     def quick_sort(self, arr):
-        if len(arr) <= 1: return arr
+        if len(arr) <= 1:
+            return arr
         p = arr.pop()
         left = [a for a in arr if a.rect.center[0] < p.rect.center[0]]
         right = [a for a in arr if a.rect.center[0] >= p.rect.center[0]]
