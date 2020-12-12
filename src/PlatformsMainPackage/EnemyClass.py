@@ -131,3 +131,6 @@ class EnemyClass(pygame.sprite.Sprite):
                 self.image = main_img.enemy_dead_left
             self.image.fill((0, 0, 0, 0))
 
+    def set_to_start_position(self):
+        self.rect[0] = self.start_x
+

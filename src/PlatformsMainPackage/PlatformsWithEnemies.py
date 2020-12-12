@@ -42,7 +42,6 @@ class PlatformsWithEnemies(Platforms):
 
     def draw(self, surface):
         blocks_counter = int(self.width / main_img.BLOCKS_WIDTH)
-        self.enemy.set_to_start_position(surface)
         if blocks_counter == 1:
             surface.blit(main_img.single_platform, self.rect)
         else:
