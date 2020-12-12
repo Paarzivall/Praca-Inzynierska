@@ -31,6 +31,7 @@ class Player(pygame.sprite.Sprite):
         self.player_movement_y = 0
         self.falling = False
         self.min_y = None
+        self.agree_to_jump = False
         self.start_player_position_x = self.rect[0]
         self.start_player_position_y = self.rect[1]
         self.items = set()
@@ -74,9 +75,8 @@ class Player(pygame.sprite.Sprite):
         metoda dzięki której nasz gracz może skakać
         :return: None
         """
-
-        if self.player_movement_y == 0 or self.player_movement_y == 16:
-            self.player_movement_y = -16
+        if self.player_movement_y == 0 or self.player_movement_y == 12 or self.agree_to_jump is True:
+            self.player_movement_y = -12
             self.falling = False
 
     def _gravity(self):
@@ -156,6 +156,7 @@ class Player(pygame.sprite.Sprite):
         :type event: pygame.event
         :return: None
         """
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                 self.turn_left()
@@ -205,13 +206,6 @@ class Player(pygame.sprite.Sprite):
             if self.player_movement_x > 0 and (self.player_movement_y < 0 or self.player_movement_y != 1):
                 self.rect.right = col.rect.left
 
-        collisions = pygame.sprite.spritecollide(self, self.level.set_of_transport_platforms, False)
-        for col in collisions:
-            if self.player_movement_x < 0 and self.player_movement_y > 16:
-                self.rect.left = col.rect.right
-            if self.player_movement_x > 0 and self.player_movement_y > 16:
-                self.rect.right = col.rect.left
-
         if self.player_movement_x < 0:
             self._move(main_img.images_left)
         if self.player_movement_x > 0:
@@ -219,6 +213,10 @@ class Player(pygame.sprite.Sprite):
         self.rect[1] += self.player_movement_y
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_transport_platforms, False)
+        if collisions:
+            self.agree_to_jump = True
+        else:
+            self.agree_to_jump = False
         for col in collisions:
             if self.player_movement_y < 0:
                 self.rect.top = col.rect.bottom

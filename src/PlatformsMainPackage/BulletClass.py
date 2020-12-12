@@ -21,6 +21,7 @@ class BulletClass(pygame.sprite.Sprite):
         self.bullet_direction = direction
         self.rect = self.bullet_image.get_rect()
         self.rect.center = rect_center
+        self.counter = 0
 
     def draw(self, board):
         """
@@ -36,6 +37,8 @@ class BulletClass(pygame.sprite.Sprite):
         metoda dzięki której pociski mogą się poruszać z zadaną szybkością
         :return: None
         """
+        print(self.counter)
+        self.counter += 1
         if self.bullet_direction == 'right':
             self.rect.x += 15
         if self.bullet_direction == 'left':

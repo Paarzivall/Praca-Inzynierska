@@ -16,14 +16,27 @@ class ExampleLvl(BaseLevelPlatform):
         # przy liście platform zakładam że 1 na liście jest zawsze startową platformą
         # zakładam że po dostaniu się na podaną platformę level jest ukończony
         # [długość platformy, punkt startowy, przesunięcie na osi X, przesunięcie na osi Y]
-        list_platforms = [[980, 0, 0, main_img.HEIGHT - 170],
-                          [420, 70, 750, 350],
-                          [980, 0, 1600, main_img.HEIGHT - 170]]
-        platform_for_enemies = [1]
-        transport_platforms = [[280, 0, 1400, 210]]
-        finish_platform = 2
-        dict_with_items = {}
+        list_platforms = [[980, 0, 0, main_img.HEIGHT - 170],  #1
+                          [420, 70, 1050, 500],  #2
+                          [420, 70, 1750, 300],  #4
+                          [140, 70, 2400, 300],  #5
+                          [280, 70, 2950, 300],  #6
+                          [490, 70, 4000, 300],  #9
+                          [70, 70, 750, 300],  # extra life
+                          ]
+        #  [980, 0, 1600, main_img.HEIGHT - 170]
+        transport_platforms = [[210, 0, 1600, 210],#3
+                               [210, 0, 3300, 210],#7
+                               [210, 0, 3700, 210],#8
+                               ]
         self.calculate_min_y_of_platforms(list_platforms)
+        """
+        for nr_platformy, parametry in enumerate(list_platforms):
+            platform = Platforms(*parametry)
+            self.set_of_platforms.add(platform)"""
+        platform_for_enemies = [1, 1, 3, 5]
+        finish_platform = 5
+        dict_with_items = {}
         self.calculate_len_of_ceiling(list_platforms)
         # list_of_ceiling = [[0, self.len_of_level, -100, -10]]
         list_of_ceiling = [[self.len_of_level + 700, 0, 0, -10]]
@@ -45,7 +58,7 @@ class ExampleLvl(BaseLevelPlatform):
             for enemy in platform_for_enemies:
                 if enemy == nr_platformy:
                     self.set_of_enemies.add(platform)
-                    self.generate_enemies_on_platforms(platform, 2, 2)
+                    self.generate_enemies_on_platforms(platform, random.randint(1, 3), random.randint(0, 2))
                 else:
                     continue
             self.set_of_platforms.add(platform)

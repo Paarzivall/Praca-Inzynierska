@@ -1,4 +1,5 @@
 import pygame
+import random
 import src.MainImages as main_img
 from src.PlatformsMainPackage.BulletClass import BulletClass
 
@@ -29,12 +30,12 @@ class EnemyClass(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self._count = 0
         self.shoot_count = 0
-        self.enemy_movement_x = 1
+        self.enemy_movement_x = random.choice([-1, 1])
         self.enemy_movement_y = 0
         self.platform = platform
         self.start = self.platform.rect.top
-        self.rect.x = self.platform.rect.x
-        self.start_x = self.rect.x + 10
+        self.rect.x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
+        self.start_x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
         self.start_y = self.platform.rect.y - 110
         self.angle = 0
         self.shoot_speed = 0
@@ -48,6 +49,12 @@ class EnemyClass(pygame.sprite.Sprite):
             else:
                 self.set_of_bullet_enemy.add(BulletClass(main_img.bullet_left, 'left',
                                                          (self.rect.x, self.platform.rect.y - 60 - self.enemy_movement_y)))
+
+    def delete_bullet(self):
+        for bullet in self.set_of_bullet_enemy:
+            if bullet.counter > 30:
+                self.set_of_bullet_enemy.remove(bullet)
+                del bullet
 
     def set_shoot_speed(self):
         if self.type_of_enemy == 1:
@@ -69,6 +76,7 @@ class EnemyClass(pygame.sprite.Sprite):
             self.enemy_movement_x *= -1
         board.blit(pygame.transform.rotate(self.image, self.angle),
                    (self.rect.x, self.platform.rect.y - 110 - self.enemy_movement_y))
+        self.delete_bullet()
 
     def move_enemy(self, speed):
         """
@@ -121,4 +129,5 @@ class EnemyClass(pygame.sprite.Sprite):
                 self.image = main_img.enemy_dead_right
             else:
                 self.image = main_img.enemy_dead_left
+            self.image.fill((0, 0, 0, 0))
 

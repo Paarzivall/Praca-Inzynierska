@@ -90,7 +90,7 @@ class BaseLevelPlatform(DrawBackground):
         for platform in list_of_platforms:
             tmp = platform[0] + platform[2]
             if tmp > self.len_of_level:
-                self.len_of_level = tmp
+                self.len_of_level += tmp
 
     def create_ceiling(self, list_of_ceiling):
         for ceiling in list_of_ceiling:
@@ -161,7 +161,7 @@ class BaseLevelPlatform(DrawBackground):
             transport.update_transport_platform()
         self.kill_enemy()
         self._destroy_bullet()
-        self.is_finish()
+#         self.is_finish()
 
     def draw(self):
         """
@@ -267,14 +267,14 @@ class BaseLevelPlatform(DrawBackground):
         """
         if direction == 'right':
             for simple_p in self.set_of_platforms:
-                simple_p.move_platform_x(-1 * main_img.SPEED_PLATFORM_X)
+                simple_p.move_platform_x(-1.1 * main_img.SPEED_PLATFORM_X)
             for enemy in self.enemy:
-                enemy.move_enemy(-1 * main_img.SPEED_PLATFORM_X)
+                enemy.move_enemy(-1.1 * main_img.SPEED_PLATFORM_X)
             for transport in self.set_of_transport_platforms:
-                transport.move_platform_x(-1 * main_img.SPEED_PLATFORM_X)
+                transport.move_platform_x(-1.1 * main_img.SPEED_PLATFORM_X)
             for ceiling in self.ceiling:
-                ceiling.move_ceiling_x(-1 * main_img.SPEED_PLATFORM_X)
-            self.portal.move_element(-1 * main_img.SPEED_PLATFORM_X)
+                ceiling.move_ceiling_x(-1.1 * main_img.SPEED_PLATFORM_X)
+            self.portal.move_element(-1.1 * main_img.SPEED_PLATFORM_X)
         if direction == 'left':
             for simple_p in self.set_of_platforms:
                 simple_p.move_platform_x(main_img.SPEED_PLATFORM_X)

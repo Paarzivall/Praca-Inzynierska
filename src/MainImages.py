@@ -21,7 +21,6 @@ MAX_BACKGROUND_X = 500"""
 
 path = ""
 if os.path.isdir('..\img'):
-    print("dupa")
     path = "..\\"
 
 # otwieranie zamka

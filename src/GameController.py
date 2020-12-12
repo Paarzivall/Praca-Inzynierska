@@ -55,9 +55,15 @@ class GameController(object):
                     fourth_break.run()
             if self.current_level == 5 and fourth_break.is_done:
                 sys.exit()"""
-        playfair = PlayFairMain()
-        playfair.run()
+        # playfair = PlayFairMain()
+        # playfair.run()
 
+        player = Player(3, main_img.stand_right)
+        lvl_platform = ExampleLvl(player)
+        player.rect.center = lvl_platform.get_surface().get_rect().center
+        player.level = lvl_platform
+        lvl_platform.update()
+        lvl_platform.run()
 
 
 if __name__ == '__main__':
