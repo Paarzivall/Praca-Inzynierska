@@ -11,7 +11,7 @@ from src.PlatformsMainPackage.BulletClass import BulletClass
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, life, start_image):
+    def __init__(self, life, start_image, binary_lvl):
         """
 
         :param life: ilość życia jaką dysponuje gracz na począku rozgrywki
@@ -37,6 +37,7 @@ class Player(pygame.sprite.Sprite):
         self.items = set()
         self.set_of_items = pygame.sprite.Group()
         self.set_of_bullets = pygame.sprite.Group()
+        self.binary_lvl = binary_lvl
 
     def draw(self, board):
         """
@@ -46,21 +47,21 @@ class Player(pygame.sprite.Sprite):
         """
         board.blit(self.actual_image, self.rect)
 
-    def turn_left(self):
+    def turn_left(self, speed=main_img.SPEED_X):
         """
         metoda służąca do zmiany kierunku poruszania się gracza - konkretnie zmiana na lewo
         :return: None
         """
         self.direction_of_movement = 'left'
-        self.player_movement_x = -1 * main_img.SPEED_X
+        self.player_movement_x = -1 * speed
 
-    def turn_right(self):
+    def turn_right(self, speed=main_img.SPEED_X):
         """
         metoda służąca do zmiany kierunku poruszania się gracza - konkretnie zmiana na prawo
         :return: None
         """
         self.direction_of_movement = 'right'
-        self.player_movement_x = main_img.SPEED_X
+        self.player_movement_x = speed
 
     def stop(self):
         """
@@ -70,13 +71,13 @@ class Player(pygame.sprite.Sprite):
         self.player_movement_x = 0
         self.player_movement_y = 0
 
-    def jump(self):
+    def jump(self, movement=-12):
         """
         metoda dzięki której nasz gracz może skakać
         :return: None
         """
-        if self.player_movement_y == 0 or self.player_movement_y == 12 or self.agree_to_jump is True:
-            self.player_movement_y = -12
+        if self.player_movement_y == 0 or self.player_movement_y == (-1 * movement) or self.agree_to_jump is True:
+            self.player_movement_y = movement
             self.falling = False
 
     def _gravity(self):
@@ -212,32 +213,44 @@ class Player(pygame.sprite.Sprite):
             self._move(main_img.images_right)
         self.rect[1] += self.player_movement_y
 
-        collisions = pygame.sprite.spritecollide(self, self.level.set_of_transport_platforms, False)
-        if collisions:
-            self.agree_to_jump = True
-        else:
-            self.agree_to_jump = False
-        for col in collisions:
-            if self.player_movement_y < 0:
-                self.rect.top = col.rect.bottom
-            if self.player_movement_y > 0:
-                self.rect.bottom = col.rect.top
+        if self.binary_lvl is False:
+            collisions = pygame.sprite.spritecollide(self, self.level.set_of_transport_platforms, False)
+            if collisions:
+                self.agree_to_jump = True
+            else:
+                self.agree_to_jump = False
+            for col in collisions:
+                if self.player_movement_y < 0:
+                    self.rect.top = col.rect.bottom
+                if self.player_movement_y > 0:
+                    self.rect.bottom = col.rect.top
 
-        collisions = pygame.sprite.spritecollide(self, self.level.ceiling, False)
-        for col in collisions:
-            if self.player_movement_y < 0:
-                self.rect.top = col.rect.bottom
-            if self.player_movement_y > 0:
-                self.rect.bottom = col.rect.top
-            self.player_movement_y = 0
+            collisions = pygame.sprite.spritecollide(self, self.level.ceiling, False)
+            for col in collisions:
+                if self.player_movement_y < 0:
+                    self.rect.top = col.rect.bottom
+                if self.player_movement_y > 0:
+                    self.rect.bottom = col.rect.top
+                self.player_movement_y = 0
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:
-            if self.player_movement_y < 0:
-                self.rect.top = col.rect.bottom
-            if self.player_movement_y > 0:
-                self.rect.bottom = col.rect.top
-            self.player_movement_y = 0
+            if col.type != 'trap':
+                if self.player_movement_y < 0:
+                    self.rect.top = col.rect.bottom
+                if self.player_movement_y > 0:
+                    self.rect.bottom = col.rect.top
+                self.player_movement_y = 0
+                if self.binary_lvl is True:
+                    if col not in self.level.player_answer:
+                        self.level.player_answer.append(col)
+                        self.level.actual_platform = col
+                    if self.level.actual_platform.mode == 'up' and self.level.actual_height_of_lvl < 8:
+                        self.level.actual_platform.mode = 'down'
+                        self.rect.x = 600
+                        self.rect.y = 500
+                        self.level.actual_height_of_lvl += 1
+                        self.level.generate_platform()
 
         if self.direction_of_movement == "right":
             if self.player_movement_y > 0:
@@ -272,9 +285,10 @@ class Player(pygame.sprite.Sprite):
             self.rect[1] = self.start_player_position_y
             self.life.del_life(1)
             self.reset_level()
-        self.enemy_collide()
-        self.enemy_bullet_collide()
-        self.pick_up()
+        if self.binary_lvl is False:
+            self.enemy_collide()
+            self.enemy_bullet_collide()
+            self.pick_up()
 
     def reset_level(self):
         for enemy in self.level.enemy:

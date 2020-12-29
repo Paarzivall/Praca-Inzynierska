@@ -136,6 +136,8 @@ class BaseLevelPlatform(DrawBackground):
         """
         if (self.player.rect.right >= self.portal.rect.left and self.player.rect.left <= self.portal.rect.right) and \
                 (self.player.rect.top <= self.portal.rect.bottom and self.player.rect.bottom >= self.portal.rect.top):
+            # print(self.player.rect.right, self.portal.rect.left, self.player.rect.left, self.portal.rect.right,
+            #      self.player.rect.top, self.portal.rect.bottom, self.player.rect.bottom, self.portal.rect.top)
             # print("koniec " + str(self.is_done))
             self.is_done = True
 
@@ -161,7 +163,7 @@ class BaseLevelPlatform(DrawBackground):
             transport.update_transport_platform()
         self.kill_enemy()
         self._destroy_bullet()
-#         self.is_finish()
+        self.is_finish()
 
     def draw(self):
         """
@@ -205,9 +207,9 @@ class BaseLevelPlatform(DrawBackground):
             self.update()
             pygame.display.flip()
             self.clock.tick(40)
-            # print(self.is_done)
             if self.is_done:
                 break
+        return True
 
     def handle_events(self):
         """

@@ -4,7 +4,7 @@ from src.PlatformsMainPackage.Platforms import Platforms
 
 class TransportPlatforms(Platforms):
     def __init__(self, width, height, rect_x, rect_y):
-        super().__init__(width, height, rect_x, rect_y)
+        super().__init__(width, height, rect_x, rect_y, 'normal')
         self.direction = "top"
 
     def update_transport_platform(self):

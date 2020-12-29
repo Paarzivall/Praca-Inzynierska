@@ -118,7 +118,7 @@ enemy_images_left = [enemy_walk_left1, enemy_walk_left2]
 bullet_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'bullet_L.png'))
 bullet_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'bullet_R.png'))
 
-gun = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'shotgun.png'))
+# gun = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'shotgun.png'))
 
 # Portal pod koniec rundy
 portal = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'finish_portal.png')))
@@ -203,3 +203,8 @@ letters = {'A': literaA, 'B': literaB, 'C': literaC, 'D': literaD, 'E': literaE,
 try_open_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_O_light.png')))
 
 table = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'table.png')))))
+
+
+
+###########Binary
+platform_binary = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'platform.png'))

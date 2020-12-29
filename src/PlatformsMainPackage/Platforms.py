@@ -8,7 +8,7 @@ Główna klasa odpowiadająca za platformy po których będzie się poruszał na
 
 class Platforms(pygame.sprite.Sprite):
 
-    def __init__(self, width, height, rect_x, rect_y):
+    def __init__(self, width, height, rect_x, rect_y, type):
         """
         :params: współrzędne opisujące położenie danej platformy
         :type: int
@@ -22,6 +22,7 @@ class Platforms(pygame.sprite.Sprite):
         self.rect.x = self.start_position_x = rect_x
         self.rect.y = self.start_position_y = rect_y
         self.ok = True
+        self.type = type
 
     def set_to_start_position(self):
         """

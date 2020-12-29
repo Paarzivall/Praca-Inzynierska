@@ -37,7 +37,6 @@ class BulletClass(pygame.sprite.Sprite):
         metoda dzięki której pociski mogą się poruszać z zadaną szybkością
         :return: None
         """
-        print(self.counter)
         self.counter += 1
         if self.bullet_direction == 'right':
             self.rect.x += 15

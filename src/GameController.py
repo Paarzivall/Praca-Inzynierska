@@ -7,6 +7,7 @@ from src.BreakingClass import BreakingClass
 import src.MainImages as main_img
 import sys
 from src.BubbleSortLevel.BubbleSortLevelMain import BubbleSortLevelMain
+from src.BinarySearch.BinarySearchMain import BinarySearchMain
 
 from src.PlayFair.PlayFairMain import PlayFairMain
 
@@ -22,7 +23,7 @@ class GameController(object):
         self.level_with_lives = {1: 'no', 2: 'yes'}
 
     def controller(self):
-        """lvl1 = Level_1_Main()
+        lvl1 = Level_1_Main()
         while True:
             if self.current_level == 1 and lvl1.is_done is False:
                 lvl1.run()
@@ -31,13 +32,12 @@ class GameController(object):
                     first_break = BreakingClass(main_img.break_1)
                     first_break.run()
             if self.current_level == 2 and first_break.is_done is True:
-                player = Player(3, main_img.stand_right)
+                player = Player(3, main_img.stand_right, False)
                 lvl_platform = ExampleLvl(player)
                 player.rect.center = lvl_platform.get_surface().get_rect().center
                 player.level = lvl_platform
                 lvl_platform.update()
-                lvl_platform.run()
-                if lvl_platform.is_done:
+                if lvl_platform.run():
                     self.current_level = 3
                     second_break = BreakingClass(main_img.break_2)
                     second_break.run()
@@ -54,16 +54,24 @@ class GameController(object):
                     fourth_break = BreakingClass(main_img.break_2)
                     fourth_break.run()
             if self.current_level == 5 and fourth_break.is_done:
-                sys.exit()"""
-        # playfair = PlayFairMain()
-        # playfair.run()
-
-        player = Player(3, main_img.stand_right)
+                binary_search = BinarySearchMain(playfair.crypto.output_text)
+                if binary_search.run():
+                    self.current_level = 6
+                    fifth_break = BreakingClass(main_img.break_2)
+                    fifth_break.run()
+            if self.current_level == 6 and fifth_break.is_done:
+                sys.exit()
+        #playfair = PlayFairMain()
+        #playfair.run()
+        # binary = BinarySearchMain(['A', 'D', 'O', 'E', 'G', 'K', 'K', 'G'])
+        # binary = BinarySearchMain(playfair.crypto.output_text)
+        # binary.run()
+        """player = Player(3, main_img.stand_right, False)
         lvl_platform = ExampleLvl(player)
         player.rect.center = lvl_platform.get_surface().get_rect().center
         player.level = lvl_platform
         lvl_platform.update()
-        lvl_platform.run()
+        lvl_platform.run()"""
 
 
 if __name__ == '__main__':
