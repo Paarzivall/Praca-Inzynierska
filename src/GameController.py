@@ -77,12 +77,10 @@ class GameController(object):
                     if self.current_level == 6 and cutscena7.is_done and player.life.player_life != 0:
                         menu2 = MenuClass("finish")
                         if menu2.run():
-                            print("dupa 2")
                             self.current_level = 1
                             lvl1 = Level_1_Main()
                     if player.life.player_life == 0:
                         menu3 = MenuClass("finish")
                         if menu3.run():
-                            print("dupa 3")
                             self.current_level = 1
                             lvl1 = Level_1_Main()

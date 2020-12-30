@@ -189,7 +189,7 @@ class BaseLevelPlatform(DrawBackground):
             self.draw()
             self.update()
             pygame.display.flip()
-            self.clock.tick(40)
+            self.clock.tick(60)
             if self.is_done:
                 break
         return True
@@ -209,11 +209,8 @@ class BaseLevelPlatform(DrawBackground):
                 if event.key == pygame.K_TAB:
                     self.action_button = True
                 elif event.key == pygame.K_w or event.key == pygame.K_UP:
-                    self.add_y_position(2)
                     self.move_platform('up')
             elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_w:
-                    self.add_y_position(-1)
                 if event.key == pygame.K_TAB:
                     self.action_button = False
             self.player.get_event(event)
@@ -223,16 +220,12 @@ class BaseLevelPlatform(DrawBackground):
         tmp_player_position_y = self.player.rect.y
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a] or keys[pygame.K_LEFT] and tmp_player_position_x != self.player.rect.x:
-            self.add_x_position(main_img.SPEED_BACKGROUND_X)
             self.move_platform('left')
         if keys[pygame.K_d] or keys[pygame.K_RIGHT] and tmp_player_position_x != self.player.rect.x:
-            self.add_x_position(-1 * main_img.SPEED_BACKGROUND_X)
             self.move_platform('right')
         if keys[pygame.K_w] or keys[pygame.K_UP] and tmp_player_position_y != self.player.rect.y:
-            self.add_y_position(main_img.SPEED_BACKGROUND_Y * 2)
             self.move_platform('up')
         if self.player.falling:
-            self.add_y_position(-1 * main_img.SPEED_BACKGROUND_Y)
             self.move_platform('down')
         if self.reset_map != self.life.player_life:
             self.reset_map = self.life.player_life

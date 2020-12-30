@@ -74,6 +74,5 @@ class MenuClass(DrawBackground):
                         tmp_ev = self.board.blit(self.again,
                                                  (100, 100))
                         if tmp_ev.collidepoint(event.pos):
-                            print("dupaaa")
                             return True
 

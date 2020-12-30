@@ -35,9 +35,3 @@ class DrawBackground(object):
 
     def get_frame(self):
         return self.frame
-
-    def add_x_position(self, size=main_img.SPEED_BACKGROUND_X):
-        self.x += size
-
-    def add_y_position(self, size=main_img.SPEED_BACKGROUND_Y):
-        self.y += size
