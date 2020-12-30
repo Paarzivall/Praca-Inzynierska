@@ -19,6 +19,7 @@ class PlayFairMain(DrawBackground):
         self.active_letter = None
         self.copied_letters = []
         self.answer_letters = []
+        self.show_helper = False
 
     def draw(self):
         self.draw_window()
@@ -28,6 +29,8 @@ class PlayFairMain(DrawBackground):
         self.letters.draw(self.board)
         for letter in self.copied_letters:
             letter.draw_copy_letter(self.board)
+        if self.show_helper is True:
+            self.board.blit(main_img.helper_playfair, (300, 100))
 
     def generate_answer(self):
         self.answer_letters = []
@@ -65,6 +68,11 @@ class PlayFairMain(DrawBackground):
                 pygame.quit()
                 exit()
                 return True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_TAB:
+                    self.show_helper = True
+            elif event.type == pygame.KEYUP:
+                self.show_helper = False
             for ltr in self.copied_letters:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:

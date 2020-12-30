@@ -12,11 +12,14 @@ class BubbleSortLevelMain(DrawBackground):
         self.board = self.get_frame()
         self.buttons = SwitchingButtons(4)
         self.is_done = False
+        self.show_helper = False
 
     def draw(self):
         self.draw_window()
         self.numbers.draw(self.board)
         self.buttons.draw(self.board)
+        if self.show_helper is True:
+            self.board.blit(main_img.helper_bubble_sort, (300, 100))
 
     def run(self):
         while not self.handle_events():
@@ -35,7 +38,7 @@ class BubbleSortLevelMain(DrawBackground):
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     # tutaj zapewnione przejście do następnej pary cyfr
-                    tmp_ev = self.board.blit(self.buttons.next_button, self.buttons.next_button_pos)
+                    tmp_ev = self.board.blit(self.buttons.next_button, self.buttons.next_button_pos[self.buttons.active_button])
                     if tmp_ev.collidepoint(event.pos):
                         if self.buttons.active_button < 3:
                             self.buttons.active_button += 1
@@ -52,3 +55,8 @@ class BubbleSortLevelMain(DrawBackground):
                         if self.numbers.is_finish() is True:
                             self.is_done = True
                             return True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_TAB:
+                    self.show_helper = True
+            elif event.type == pygame.KEYUP:
+                self.show_helper = False

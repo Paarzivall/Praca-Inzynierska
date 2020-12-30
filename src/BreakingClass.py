@@ -5,7 +5,7 @@ from src.DrawBackground import DrawBackground
 
 class BreakingClass(DrawBackground):
     def __init__(self, img):
-        super().__init__(img, -300, -300)
+        super().__init__(img, 0, 0)
         self.is_done = False
 
     def draw(self):

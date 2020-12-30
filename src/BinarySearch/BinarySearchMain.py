@@ -9,7 +9,7 @@ from src.BinarySearch.ShowAnswer import ShowAnswer
 
 class BinarySearchMain(DrawBackground):
     def __init__(self, answer_text):
-        super().__init__(main_img.platform_background2, -300, -300)
+        super().__init__(main_img.binary_background, -300, -300)
         self.answer_text = answer_text
         self.show_answer = ShowAnswer()
         self.tree = GenerateTree(list(answer_text))
@@ -28,6 +28,7 @@ class BinarySearchMain(DrawBackground):
         self.tree.print_tree()
         self.actual_platform = None
         self.generate_platform()
+        self.show_helper = False
 
     def generate_answer(self):
         self.show_answer.answer.append(self.actual_platform.value)
@@ -47,10 +48,13 @@ class BinarySearchMain(DrawBackground):
         self.generate_answer()
 
     def check_type_of_platform(self, child):
-        if self.tree.tree[self.actual_height_of_lvl + 1].root == child:
-            return 'normal'
+        if self.actual_height_of_lvl < self.tree.height - 1:
+            if self.tree.tree[self.actual_height_of_lvl + 1].root == child:
+                return 'normal'
+            else:
+                return 'trap'
         else:
-            return 'trap'
+            self.is_done = True
 
     def draw(self):
         super().draw_window()
@@ -58,6 +62,8 @@ class BinarySearchMain(DrawBackground):
             platform.draw(self.board)
         self.player.draw(self.board)
         self.show_answer.draw(self.board)
+        if self.show_helper is True:
+            self.board.blit(main_img.helper_binary_tree, (300, 100))
 
     def update(self):
         self.player.update_images()
@@ -99,6 +105,8 @@ class BinarySearchMain(DrawBackground):
                     self.player.turn_right(5)
                 if event.key == pygame.K_UP or event.key == pygame.K_w:
                     self.player.jump(-17)
+                if event.key == pygame.K_TAB:
+                    self.show_helper = True
             elif event.type == pygame.KEYUP:
                 if (event.key == pygame.K_LEFT or event.key == pygame.K_a) and self.player.player_movement_x < 0:
                     self.player.stop()
@@ -106,5 +114,6 @@ class BinarySearchMain(DrawBackground):
                 if (event.key == pygame.K_RIGHT or event.key == pygame.K_d) and self.player.player_movement_x > 0:
                     self.player.stop()
                     self.player.actual_image = main_img.stand_right
+                self.show_helper = False
 
 

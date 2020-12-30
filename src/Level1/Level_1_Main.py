@@ -13,10 +13,13 @@ class Level_1_Main(DrawBackground):
         self.board = pygame.display.get_surface()
         self.action = Action()
         self.is_done = False
+        self.show_helper = False
 
     def draw(self):
         self.draw_window()
         self.action.draw_action()
+        if self.show_helper is True:
+            self.board.blit(main_img.helper_binary_convert, (300, 100))
 
     def run(self):
         while not self.handle_events() and not self.action.end_level():
@@ -36,5 +39,7 @@ class Level_1_Main(DrawBackground):
                 return True
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_TAB:
-                    print("HELPER")
+                    self.show_helper = True
+            elif event.type == pygame.KEYUP:
+                self.show_helper = False
 

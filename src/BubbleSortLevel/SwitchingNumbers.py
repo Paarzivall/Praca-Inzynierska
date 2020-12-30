@@ -4,7 +4,7 @@ import random
 
 class SwitchingNumbers(object):
     def __init__(self):
-        self.position = {0: (180, 230), 1: (370, 230), 2: (560, 230), 3: (750, 230), 4: (940, 230)}
+        self.position = {0: (195, 220), 1: (385, 220), 2: (575, 220), 3: (770, 220), 4: (960, 220)}
         self.pairs = {0: (0, 1), 1: (1, 2), 2: (2, 3), 3: (3, 4)}
         self.numbers = main_img.numbers_image
         self.list_of_numbers = self.create_list_of_numbers()

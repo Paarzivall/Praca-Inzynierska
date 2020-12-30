@@ -23,8 +23,29 @@ path = ""
 if os.path.isdir('..\img'):
     path = "..\\"
 
+"""
+###########################################################
+######################## MENU #############################
+###########################################################
+"""
+
+menu_background = pygame.image.load(os.path.join(path + 'img\\MenuImg', 'menu_background.png'))
+start_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'start.png')))
+end_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'end.png')))
+again_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'again.png')))
+title = pygame.image.load(os.path.join(path + 'img\\MenuImg', 'title.png'))
+wiking_icon = pygame.image.load(os.path.join(path + 'img\\MenuImg', 'wiking_icon.png'))
+
+"""
+###########################################################
+################### Binary Convert ########################
+###########################################################
+"""
+
 # otwieranie zamka
 first_background = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert', 'otwieranie_zamka.png')))
+
+helper_binary_convert = pygame.image.load(os.path.join(path + 'img\\BinaryConvert', 'helper_image.png'))
 
 # cyfry do 1 levelu
 
@@ -66,9 +87,15 @@ pin_6_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\B
 pins_down = {0: pin_0_down, 1: pin_1_down, 2: pin_2_down,
              3: pin_3_down, 4: pin_4_down, 5: pin_5_down, 6: pin_6_down}
 
-# Platformowe Levele
+"""
+###########################################################
+################### Platform Level ########################
+###########################################################
+"""
+helper_platform_1 = pygame.image.load(os.path.join(path + 'img\\Platforms_levels', 'helper_image_1.png'))
+helper_platform_2 = pygame.image.load(os.path.join(path + 'img\\Platforms_levels', 'helper_image_1.png'))
+helper_platform_none = pygame.image.load(os.path.join(path + 'img\\Platforms_levels', 'helper_image_none.png'))
 
-# platform_background = resize(pygame.image.load(os.path.join('img\Platforms_Levels', 'background.png')))
 platform_background2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'new_img.jpg'))
 
 # Ruchy Postaci
@@ -115,8 +142,8 @@ enemy_images_right = [enemy_walk_right1, enemy_walk_right2]
 enemy_images_left = [enemy_walk_left1, enemy_walk_left2]
 
 # Pociski
-bullet_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'bullet_L.png'))
-bullet_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'bullet_R.png'))
+bullet_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'strzala_L.png'))
+bullet_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'strzala_R.png'))
 
 # gun = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'shotgun.png'))
 
@@ -134,14 +161,31 @@ pergamin = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'perga
 cenzura = resize(resize(resize(resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'cenzura.png')))))))))
 potion_max_life = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'potion_max_life.png')))))
 
-# Przerywniki Leveli
-break_1 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))
-break_2 = pygame.image.load(os.path.join(path + 'img\\', 'miedzy_lvl1.png'))
+"""
+###########################################################
+###################### Cutsceny ###########################
+###########################################################
+"""
+
+cutscena_1 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#1.png')))
+cutscena_2 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#2.png')))
+cutscena_3 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#3.png')))
+cutscena_4 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#4.png')))
+cutscena_5 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#5.png')))
+cutscena_6 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#6.png')))
+cutscena_7 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#7.png')))
 
 
-# BUBBLE SORT
+"""
+###########################################################
+#################### Bubble Sort ##########################
+###########################################################
+"""
+
 #background
 bubble_background = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'mechanizm_szkic.png')))
+
+helper_bubble_sort = pygame.image.load(os.path.join(path + 'img\\bubble', 'helper_bubble_sort.png'))
 
 switch_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch_off.png')))
 switch_button_light = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch_on.png')))
@@ -162,10 +206,16 @@ image_9 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '9.png')))
 numbers_image = {0: image_0, 1: image_1, 2: image_2, 3: image_3, 4: image_4,
                  5: image_5, 6: image_6, 7: image_7, 8: image_8, 9: image_9}
 
-lock = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_O_light.png')))
+lock = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'kolatka.png')))))
 
+"""
+###########################################################
+###################### PlayFair ###########################
+###########################################################
+"""
 
-##PlayFair
+helper_playfair = pygame.image.load(os.path.join(path + 'img\\PlayFair', 'playfair_helper.png'))
+
 playfair_background = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'backgroundPlayFair.png')))
 
 #litery
@@ -205,6 +255,11 @@ try_open_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'b
 table = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'table.png')))))
 
 
-
-###########Binary
+"""
+###########################################################
+###################### Binary Tree ########################
+###########################################################
+"""
+binary_background = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'background.jpg'))
 platform_binary = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'platform.png'))
+helper_binary_tree = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'binary_helper.png'))

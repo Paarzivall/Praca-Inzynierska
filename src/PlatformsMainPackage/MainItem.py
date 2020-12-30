@@ -34,7 +34,7 @@ class MainItem(pygame.sprite.Sprite):
         :return: None
         """
         if self.picked is False:
-            board.blit(self.item_image, (self.platform.rect.center[0], self.platform.rect.center[1] - 70))
+            board.blit(self.item_image, (self.platform.rect.center[0], self.platform.rect.top - 70))
 
     def update_item(self, rect_center):
         """
@@ -45,10 +45,9 @@ class MainItem(pygame.sprite.Sprite):
         """
         self.rect.center = rect_center
 
-    def draw_tip_full_screen(self, action_button, board):
+    def draw_tip_full_screen(self, action_button, board, image):
         if self.name_of_item == 'Tip' and action_button is True:
             if self.picked is False:
-                board.blit(main_img.pergamin, (600, 200))
-                board.blit(main_img.cenzura, (650, 300))
+                board.blit(main_img.helper_platform_none, (300, 100))
             else:
-                board.blit(main_img.pergamin, (600, 200))
+                board.blit(image, (300, 100))

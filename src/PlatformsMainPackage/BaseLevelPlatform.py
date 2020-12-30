@@ -5,7 +5,6 @@ from src.PlatformsMainPackage.Player import Player
 from src.PlatformsMainPackage.LifeController import LifeController
 from src.PlatformsMainPackage.EnemyClass import EnemyClass
 from src.PlatformsMainPackage.MainItem import MainItem
-from src.PlatformsMainPackage.CeilingClass import CeilingClass
 from  src.PlatformsMainPackage.MapStaticElements import MapStaticElements
 import src.MainImages as main_img
 
@@ -43,9 +42,9 @@ class BaseLevelPlatform(DrawBackground):
         self.dict_of_items = None
         self.finish_platform = None
         self.portal = None
-        self.ceiling = set()
         self.is_done = False
         self.action_button = False
+        self.help_image = None
 
     def generate_items_on_map(self, dict_of_items):
         self.dict_of_items = dict_of_items
@@ -84,17 +83,6 @@ class BaseLevelPlatform(DrawBackground):
             if platform[3] > self.min_y:
                 self.min_y = platform[3]
         self.player.min_y = self.min_y
-
-    def calculate_len_of_ceiling(self, list_of_platforms):
-        self.len_of_level = list_of_platforms[0][0] + list_of_platforms[0][2]
-        for platform in list_of_platforms:
-            tmp = platform[0] + platform[2]
-            if tmp > self.len_of_level:
-                self.len_of_level += tmp
-
-    def create_ceiling(self, list_of_ceiling):
-        for ceiling in list_of_ceiling:
-            self.ceiling.add(CeilingClass(*ceiling))
 
     def kill_enemy(self):
         """
@@ -136,9 +124,6 @@ class BaseLevelPlatform(DrawBackground):
         """
         if (self.player.rect.right >= self.portal.rect.left and self.player.rect.left <= self.portal.rect.right) and \
                 (self.player.rect.top <= self.portal.rect.bottom and self.player.rect.bottom >= self.portal.rect.top):
-            # print(self.player.rect.right, self.portal.rect.left, self.player.rect.left, self.portal.rect.right,
-            #      self.player.rect.top, self.portal.rect.bottom, self.player.rect.bottom, self.portal.rect.top)
-            # print("koniec " + str(self.is_done))
             self.is_done = True
 
     def update(self):
@@ -183,8 +168,6 @@ class BaseLevelPlatform(DrawBackground):
         for transport in self.set_of_transport_platforms:
             transport.set_direction()
             transport.draw(self.board)
-        for ceiling in self.ceiling:
-            ceiling.draw(self.board)
         self.tip.draw_item(self.board)
         if self.potion is not None:
             self.potion.draw_item(self.board)
@@ -195,7 +178,7 @@ class BaseLevelPlatform(DrawBackground):
         self.player.update_images()
         self.life.draw_player_life(self.board)
         self.tip.draw_thumbnail(self.board)
-        self.tip.draw_tip_full_screen(self.action_button, self.board)
+        self.tip.draw_tip_full_screen(self.action_button, self.board, self.help_image)
 
     def run(self):
         """
@@ -276,8 +259,6 @@ class BaseLevelPlatform(DrawBackground):
                 enemy.move_enemy(-1.1 * main_img.SPEED_PLATFORM_X)
             for transport in self.set_of_transport_platforms:
                 transport.move_platform_x(-1.1 * main_img.SPEED_PLATFORM_X)
-            for ceiling in self.ceiling:
-                ceiling.move_ceiling_x(-1.1 * main_img.SPEED_PLATFORM_X)
             self.portal.move_element(-1.1 * main_img.SPEED_PLATFORM_X)
         if direction == 'left':
             for simple_p in self.set_of_platforms:
@@ -286,8 +267,6 @@ class BaseLevelPlatform(DrawBackground):
                 enemy.move_enemy(main_img.SPEED_PLATFORM_X)
             for transport in self.set_of_transport_platforms:
                 transport.move_platform_x(main_img.SPEED_PLATFORM_X)
-            for ceiling in self.ceiling:
-                ceiling.move_ceiling_x(main_img.SPEED_PLATFORM_X)
             self.portal.move_element(main_img.SPEED_PLATFORM_X)
         if direction == 'up':
             for simple_p in self.set_of_platforms:

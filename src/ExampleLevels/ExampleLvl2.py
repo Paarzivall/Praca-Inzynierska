@@ -8,7 +8,7 @@ from src.PlatformsMainPackage.MapStaticElements import MapStaticElements
 import src.MainImages as main_img
 
 
-class ExampleLvl(BaseLevelPlatform):
+class ExampleLvl2(BaseLevelPlatform):
     def __init__(self, player=Player):
         super().__init__(main_img.platform_background2, player)
         self.surface = pygame.display.get_surface()
@@ -16,24 +16,32 @@ class ExampleLvl(BaseLevelPlatform):
         # przy liście platform zakładam że 1 na liście jest zawsze startową platformą
         # zakładam że po dostaniu się na podaną platformę level jest ukończony
         # [długość platformy, punkt startowy, przesunięcie na osi X, przesunięcie na osi Y]
-        list_platforms = [[980, 0, 0, main_img.HEIGHT - 170],  #1
-                          [420, 70, 1050, 500],  #2
-                          [420, 70, 1750, 300],  #4
-                          [140, 70, 2400, 300],  #5
-                          [280, 70, 2950, 300],  #6
-                          [490, 70, 4000, 300],  #9
-                          [70, 70, 750, 300],  # extra life
+        list_platforms = [[980, 0, 0, main_img.HEIGHT - 170],
+                          [140, 737, 1300, main_img.HEIGHT - 170],
+                          [350, 1700, 1700, main_img.HEIGHT - 170],
+                          [70, 2200, 2200, main_img.HEIGHT - 170],
+                          [70, 2400, 2400, main_img.HEIGHT - 170],
+                          [70, 2600, 2600, main_img.HEIGHT - 170],
+                          [70, 2900, 2900, main_img.HEIGHT - 170],
+                          [70, 3200, 3200, main_img.HEIGHT - 170],
+                          [70, 3500, 3500, main_img.HEIGHT - 170],
+                          [70, 3500, 3500, main_img.HEIGHT - 170],
+                          [70, 3500, 3500, main_img.HEIGHT - 170],
+                          [490, 4000, 4000, 300],  # 9
                           ]
-        transport_platforms = [[210, 0, 1600, 210],#3
-                               [210, 0, 3300, 210],#7
-                               [210, 0, 3700, 210],#8
+        transport_platforms = [
+                               [210, 3700, 3700, 210],#8
                                ]
-        self.help_image = main_img.helper_platform_1
         self.calculate_min_y_of_platforms(list_platforms)
-        platform_for_enemies = [1, 1, 3, 5]
-        finish_platform = 5
+        self.help_image = main_img.helper_platform_2
+        platform_for_enemies = [1, 2, 2]
+        finish_platform = 11
         dict_with_items = {}
-        self.platform_with_tip = 2
+
+        self.player.rect.x = self.player.start_player_position_x = 20
+        self.player.rect.y = self.player.start_player_position_y = 20
+
+        self.platform_with_tip = 1
         self.platform_with_potion = random.randint(0, len(list_platforms))
         self.platforms_with_heart = 6
         for nr_platformy, parametry in enumerate(list_platforms):

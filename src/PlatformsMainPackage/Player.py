@@ -117,8 +117,8 @@ class Player(pygame.sprite.Sprite):
         for item in self.level.dict_of_items:
             if self.level.dict_of_items[item].rect.center[0] - 20 >= self.rect.left and \
                     self.level.dict_of_items[item].rect.center[0] + 20 <= self.rect.right and \
-                    (self.level.dict_of_items[item].rect.center[1] == self.rect.bottom or
-                     self.level.dict_of_items[item].rect.center[1] - 35 == self.rect.bottom):
+                    (self.level.dict_of_items[item].rect.top == self.rect.bottom or
+                     self.level.dict_of_items[item].rect.top - 35 == self.rect.bottom):
                 if item == "potion_max_life":
                     if self.life.player_life < 3:
                         self.level.potion.picked = True
@@ -139,7 +139,6 @@ class Player(pygame.sprite.Sprite):
         :param event: zbiór eventów wykrytych przez pygame
         :return: None
         """
-        #if self.items.__len__() > 0:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 if self.direction_of_movement == 'right':
@@ -182,7 +181,6 @@ class Player(pygame.sprite.Sprite):
             if self.rect.center[1] + 55 == enemy.start_y + 110 and (self.rect.right == enemy.rect.right - 50 or
                                                                     self.rect.left == enemy.rect.left - 50):
                 self.life.del_life(1)
-                # self.rect.y -= 150
 
     def enemy_bullet_collide(self):
         for enemy in self.level.enemy:
@@ -224,14 +222,6 @@ class Player(pygame.sprite.Sprite):
                     self.rect.top = col.rect.bottom
                 if self.player_movement_y > 0:
                     self.rect.bottom = col.rect.top
-
-            collisions = pygame.sprite.spritecollide(self, self.level.ceiling, False)
-            for col in collisions:
-                if self.player_movement_y < 0:
-                    self.rect.top = col.rect.bottom
-                if self.player_movement_y > 0:
-                    self.rect.bottom = col.rect.top
-                self.player_movement_y = 0
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:
