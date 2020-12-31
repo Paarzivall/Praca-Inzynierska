@@ -38,6 +38,7 @@ class Player(pygame.sprite.Sprite):
         self.set_of_items = pygame.sprite.Group()
         self.set_of_bullets = pygame.sprite.Group()
         self.binary_lvl = binary_lvl
+        self.diference = 0
 
     def draw(self, board):
         """
@@ -222,6 +223,8 @@ class Player(pygame.sprite.Sprite):
                     self.rect.top = col.rect.bottom
                 if self.player_movement_y > 0:
                     self.rect.bottom = col.rect.top
+                if self.rect.right == col.rect.left or self.rect.left == col.rect.right:
+                    break
 
         collisions = pygame.sprite.spritecollide(self, self.level.set_of_platforms, False)
         for col in collisions:
@@ -263,7 +266,7 @@ class Player(pygame.sprite.Sprite):
                 self.actual_image = main_img.stand_left
             else:
                 self.actual_image = main_img.stand_right
-        if self.rect[1] > self.min_y:
+        if self.rect.center[1] > 2000:
             #tutaj reset mapy do stanu początkowego po spadnięciu gracza poniżej poziomu najniższej platformy
             if self.direction_of_movement == 'left':
                 self.actual_image = main_img.fail_left
@@ -281,5 +284,6 @@ class Player(pygame.sprite.Sprite):
             self.pick_up()
 
     def reset_level(self):
+        self.diference = self.start_player_position_x - self.rect[0]
         for enemy in self.level.enemy:
-            enemy.rect.x = enemy.start_x
+            enemy.rect.x = enemy.start_x - self.diference

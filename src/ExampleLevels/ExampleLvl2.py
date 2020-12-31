@@ -18,19 +18,19 @@ class ExampleLvl2(BaseLevelPlatform):
         # [długość platformy, punkt startowy, przesunięcie na osi X, przesunięcie na osi Y]
         list_platforms = [[980, 0, 0, main_img.HEIGHT - 170],
                           [140, 737, 1300, main_img.HEIGHT - 170],
-                          [350, 1700, 1700, main_img.HEIGHT - 170],
-                          [70, 2200, 2200, main_img.HEIGHT - 170],
-                          [70, 2400, 2400, main_img.HEIGHT - 170],
-                          [70, 2600, 2600, main_img.HEIGHT - 170],
-                          [70, 2900, 2900, main_img.HEIGHT - 170],
-                          [70, 3200, 3200, main_img.HEIGHT - 170],
-                          [70, 3500, 3500, main_img.HEIGHT - 170],
-                          [70, 3500, 3500, main_img.HEIGHT - 170],
-                          [70, 3500, 3500, main_img.HEIGHT - 170],
-                          [490, 4000, 4000, 300],  # 9
+                          [350, 170, 1700, main_img.HEIGHT - 170],
+                          [70, 220, 2200, main_img.HEIGHT - 170],
+                          [70, 240, 2400, main_img.HEIGHT - 170],
+                          [70, 260, 2600, main_img.HEIGHT - 170],
+                          [70, 290, 2900, main_img.HEIGHT - 170],
+                          [70, 320, 3200, main_img.HEIGHT - 170],
+                          [70, 350, 3500, main_img.HEIGHT - 170],
+                          [70, 350, 3500, main_img.HEIGHT - 170],
+                          [70, 350, 3500, main_img.HEIGHT - 170],
+                          [490, 400, 4000, 300],  # 9
                           ]
         transport_platforms = [
-                               [210, 3700, 3700, 210],#8
+                               [210, 370, 3700, 210],#8
                                ]
         self.calculate_min_y_of_platforms(list_platforms)
         self.help_image = main_img.helper_platform_2

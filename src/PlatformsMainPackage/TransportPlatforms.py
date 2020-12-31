@@ -20,6 +20,9 @@ class TransportPlatforms(Platforms):
         elif self.rect.top == 200:
             self.direction = 'bottom'
 
+    def move_platform_x(self, speed):
+        super().move_platform_x(speed)
+
     def draw(self, surface):
         blocks_counter = int(self.width / main_img.BLOCKS_WIDTH)
         if blocks_counter == 1:
