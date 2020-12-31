@@ -34,8 +34,8 @@ class EnemyClass(pygame.sprite.Sprite):
         self.enemy_movement_y = 0
         self.platform = platform
         self.start = self.platform.rect.top
-        self.rect.x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
-        self.start_x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
+        self.start_x = self.rect.x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
+        # self.start_x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
         self.start_y = self.platform.rect.y - 110
         self.angle = 0
         self.shoot_speed = 0
