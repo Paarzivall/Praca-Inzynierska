@@ -11,6 +11,7 @@ class BinarySearchMain(DrawBackground):
     def __init__(self, answer_text):
         super().__init__(main_img.binary_background, -300, -300)
         self.answer_text = answer_text
+        print(self.answer_text)
         self.show_answer = ShowAnswer()
         self.tree = GenerateTree(list(answer_text))
         self.player_actual_position = 'down'
@@ -29,31 +30,38 @@ class BinarySearchMain(DrawBackground):
         self.actual_platform = None
         self.generate_platform()
         self.show_helper = False
+        self.font = pygame.font.SysFont('Comic Sans MS', 30)
 
     def generate_answer(self):
-        self.show_answer.answer.append(self.actual_platform.value)
+        self.show_answer.answer.append(self.actual_platform.letter_value)
 
     def generate_platform(self):
         self.set_of_platforms.clear()
-        root = self.tree.tree[self.actual_height_of_lvl].root
-        left_child = self.tree.tree[self.actual_height_of_lvl].left_child
-        right_child = self.tree.tree[self.actual_height_of_lvl].right_child
+        # print(self.tree.tree[self.actual_height_of_lvl - 1].root_letter)
+        root = str(self.tree.tree[self.actual_height_of_lvl].root)
+        root_letter = self.tree.tree[self.actual_height_of_lvl].root_letter
+        left_child = str(self.tree.tree[self.actual_height_of_lvl].left_child)
+        left_child_letter = self.tree.tree[self.actual_height_of_lvl].left_child_letter
+        right_child = str(self.tree.tree[self.actual_height_of_lvl].right_child)
+        right_child_letter = self.tree.tree[self.actual_height_of_lvl].right_child_letter
         self.set_of_platforms.append(BinaryPlatforms(main_img.platform_binary, self.platform_position['root'],
-                                                     root, 'normal', 'down')) # root zawsze jest dobrą platformą
+                                                     root, root_letter, 'normal', 'down')) # root zawsze jest dobrą platformą
         self.set_of_platforms.append(BinaryPlatforms(main_img.platform_binary, self.platform_position['left'],
-                                                     left_child, self.check_type_of_platform(left_child), 'up'))
+                                                     left_child, left_child_letter, self.check_type_of_platform(left_child_letter), 'up'))
         self.set_of_platforms.append(BinaryPlatforms(main_img.platform_binary, self.platform_position['right'],
-                                                     right_child, self.check_type_of_platform(right_child), 'up'))
+                                                     right_child, right_child_letter, self.check_type_of_platform(right_child_letter), 'up'))
         self.actual_platform = self.set_of_platforms[0]
         self.generate_answer()
 
     def check_type_of_platform(self, child):
+        print(self.actual_height_of_lvl, self.tree.height)
         if self.actual_height_of_lvl < self.tree.height - 1:
-            if self.tree.tree[self.actual_height_of_lvl + 1].root == child:
+            if self.answer_text[self.actual_height_of_lvl + 1] == child:
                 return 'normal'
             else:
                 return 'trap'
         else:
+            print("done")
             self.is_done = True
 
     def draw(self):
@@ -64,6 +72,8 @@ class BinarySearchMain(DrawBackground):
         self.show_answer.draw(self.board)
         if self.show_helper is True:
             self.board.blit(main_img.helper_binary_tree, (300, 100))
+            for num_of_letter, letter in enumerate(self.answer_text):
+                self.board.blit(self.font.render(letter[0], False, (0, 0, 0)), (690 + num_of_letter * 22, 290))
 
     def update(self):
         self.player.update_images()
@@ -77,7 +87,7 @@ class BinarySearchMain(DrawBackground):
         metoda dzięki której dany level się update'uje: służy jako kontroler levelu
         :return: None
         """
-        while not self.handle_events():
+        while not self.handle_events() or self.is_done is False:
             self.is_finish()
             self.draw()
             self.update()

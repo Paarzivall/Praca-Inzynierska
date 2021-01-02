@@ -267,7 +267,7 @@ class Player(pygame.sprite.Sprite):
                 self.actual_image = main_img.stand_left
             else:
                 self.actual_image = main_img.stand_right
-        if self.rect.center[1] > 2000:
+        if self.rect.center[1] > 1000:
             #tutaj reset mapy do stanu początkowego po spadnięciu gracza poniżej poziomu najniższej platformy
             self.set_image_in_reset()
         if self.binary_lvl is False:
@@ -275,6 +275,7 @@ class Player(pygame.sprite.Sprite):
                 self.set_image_in_reset()
             self.enemy_bullet_collide()
             self.pick_up()
+            # self.reset_level()
 
     def set_image_in_reset(self):
         if self.direction_of_movement == 'left':
@@ -286,7 +287,6 @@ class Player(pygame.sprite.Sprite):
         self.rect[0] = self.start_player_position_x
         self.rect[1] = self.start_player_position_y
         self.life.del_life(1)
-        self.reset_level()
 
     def reset_level(self):
         self.diference = self.start_player_position_x - self.rect[0]
