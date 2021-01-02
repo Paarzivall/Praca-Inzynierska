@@ -233,8 +233,8 @@ class BaseLevelPlatform(DrawBackground):
                 simple_p.set_to_start_position()
             for transport in self.set_of_transport_platforms:
                 transport.set_to_start_position()
-            for enemy in self.set_of_enemies:
-                enemy.set_to_start_position()
+            for enemy in self.enemy:
+                enemy.set_to_start_position_enemy()
             self.set_to_start_position(self.b_x, self.b_y)
             self.portal.set_to_start_position()
 

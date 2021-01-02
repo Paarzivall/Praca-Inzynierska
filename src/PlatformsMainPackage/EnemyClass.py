@@ -69,6 +69,7 @@ class EnemyClass(pygame.sprite.Sprite):
         :type board: pygame surface
         :return: None
         """
+        # print(self.rect.center)
         if self.platform.rect.x >= self.rect.x:
             self.enemy_movement_x *= -1
         elif self.platform.rect.x + self.platform.width - 70 <= self.rect.x:
@@ -132,6 +133,6 @@ class EnemyClass(pygame.sprite.Sprite):
                 self.image = main_img.enemy_dead_left
             self.image.fill((0, 0, 0, 0))
 
-    def set_to_start_position(self):
+    def set_to_start_position_enemy(self):
         self.rect[0] = self.start_x
 

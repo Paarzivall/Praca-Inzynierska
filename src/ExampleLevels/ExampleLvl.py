@@ -4,7 +4,6 @@ from src.PlatformsMainPackage.BaseLevelPlatform import BaseLevelPlatform
 from src.PlatformsMainPackage.Player import Player
 from src.PlatformsMainPackage.Platforms import Platforms
 from src.PlatformsMainPackage.TransportPlatforms import TransportPlatforms
-from src.PlatformsMainPackage.MapStaticElements import MapStaticElements
 import src.MainImages as main_img
 
 

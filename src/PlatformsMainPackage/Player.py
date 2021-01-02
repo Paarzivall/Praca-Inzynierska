@@ -182,6 +182,7 @@ class Player(pygame.sprite.Sprite):
             if self.rect.center[1] + 55 == enemy.start_y + 110 and (self.rect.right == enemy.rect.right - 50 or
                                                                     self.rect.left == enemy.rect.left - 50):
                 self.life.del_life(1)
+                return True
 
     def enemy_bullet_collide(self):
         for enemy in self.level.enemy:
@@ -268,22 +269,26 @@ class Player(pygame.sprite.Sprite):
                 self.actual_image = main_img.stand_right
         if self.rect.center[1] > 2000:
             #tutaj reset mapy do stanu początkowego po spadnięciu gracza poniżej poziomu najniższej platformy
-            if self.direction_of_movement == 'left':
-                self.actual_image = main_img.fail_left
-                self.falling = True
-            else:
-                self.actual_image = main_img.fail_right
-                self.falling = True
-            self.rect[0] = self.start_player_position_x
-            self.rect[1] = self.start_player_position_y
-            self.life.del_life(1)
-            self.reset_level()
+            self.set_image_in_reset()
         if self.binary_lvl is False:
-            self.enemy_collide()
+            if self.enemy_collide():
+                self.set_image_in_reset()
             self.enemy_bullet_collide()
             self.pick_up()
+
+    def set_image_in_reset(self):
+        if self.direction_of_movement == 'left':
+            self.actual_image = main_img.fail_left
+            self.falling = True
+        else:
+            self.actual_image = main_img.fail_right
+            self.falling = True
+        self.rect[0] = self.start_player_position_x
+        self.rect[1] = self.start_player_position_y
+        self.life.del_life(1)
+        self.reset_level()
 
     def reset_level(self):
         self.diference = self.start_player_position_x - self.rect[0]
         for enemy in self.level.enemy:
-            enemy.rect.x = enemy.start_x - self.diference
+            enemy.set_to_start_position_enemy()
