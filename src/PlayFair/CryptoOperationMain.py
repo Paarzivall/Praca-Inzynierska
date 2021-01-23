@@ -9,11 +9,11 @@ class CryptoOperationMain(object):
         self.char_list = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M",
                           "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         self.word_list = ['RAGNAR', 'WALHALLA', 'ODYN', 'THOR']
-        self.char_position = [(70, 400), (120, 400), (170, 400), (220, 400), (270, 400),
-                              (70, 460), (120, 460), (170, 460), (220, 460), (270, 460),
-                              (70, 510), (120, 510), (170, 510), (220, 510), (270, 510),
-                              (70, 560), (120, 560), (170, 560), (220, 560), (270, 560),
-                              (70, 620), (120, 620), (170, 620), (220, 620), (270, 620)]
+        self.char_position = [(70, 430), (120, 430), (170, 430), (220, 430), (270, 430),
+                              (70, 490), (120, 490), (170, 490), (220, 490), (270, 490),
+                              (70, 540), (120, 540), (170, 540), (220, 540), (270, 540),
+                              (70, 590), (120, 590), (170, 590), (220, 590), (270, 590),
+                              (70, 650), (120, 650), (170, 650), (220, 650), (270, 650)]
         self.picked_word = self.pick_word()
         self.key = self.pick_key()
         self.table = self.generate_table()
@@ -80,7 +80,7 @@ class CryptoOperationMain(object):
 
     def draw(self, surface):
         surface.blit(self.font.render(self.picked_word, False, (0, 0, 0)), (930, 550))
-        surface.blit(main_img.table, (50, 400))
+        surface.blit(main_img.table, (50, 430))
         counter = 0
         for x in self.table:
             for y in x:

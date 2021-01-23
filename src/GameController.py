@@ -46,7 +46,6 @@ class GameController(object):
                             self.current_level = 3
                             cutscena3 = BreakingClass(main_img.cutscena_3)
                             cutscena3.run()
-                        print()
                     if self.current_level == 3 and cutscena3.is_done and player.life.player_life != 0:
                         bubble = BubbleSortLevelMain()
                         if bubble.run():

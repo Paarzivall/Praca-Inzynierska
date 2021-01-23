@@ -11,13 +11,6 @@ SPEED_BACKGROUND_X = 0.3
 SPEED_BACKGROUND_Y = 0
 BLOCKS_WIDTH = 70
 MAX_BACKGROUND_X = 500
-"""
-SPEED_PLATFORM_X = 0
-SPEED_PLATFORM_Y = 0
-SPEED_BACKGROUND_X = 0
-SPEED_BACKGROUND_Y = 0
-BLOCKS_WIDTH = 70
-MAX_BACKGROUND_X = 500"""
 
 path = ""
 if os.path.isdir('..\img'):
@@ -30,9 +23,9 @@ if os.path.isdir('..\img'):
 """
 
 menu_background = pygame.image.load(os.path.join(path + 'img\\MenuImg', 'menu_background.png'))
-start_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'start.png')))
-end_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'end.png')))
-again_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'again.png')))
+start_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'start.png')), 1.5)
+end_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'end.png')), 1.5)
+again_button = resize(pygame.image.load(os.path.join(path + 'img\\MenuImg', 'again.png')), 1.5)
 title = pygame.image.load(os.path.join(path + 'img\\MenuImg', 'title.png'))
 wiking_icon = pygame.image.load(os.path.join(path + 'img\\MenuImg', 'wiking_icon.png'))
 
@@ -43,46 +36,46 @@ wiking_icon = pygame.image.load(os.path.join(path + 'img\\MenuImg', 'wiking_icon
 """
 
 # otwieranie zamka
-first_background = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert', 'otwieranie_zamka.png')))
+first_background = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert', 'otwieranie_zamka.png')), 1.5)
 
 helper_binary_convert = pygame.image.load(os.path.join(path + 'img\\BinaryConvert', 'helper_image.png'))
 
 # cyfry do 1 levelu
 
-zero = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '0.png')))
-one = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '1.png')))
-two = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '2.png')))
-three = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '3.png')))
-four = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '4.png')))
-five = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '5.png')))
-six = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '6.png')))
-seven = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '7.png')))
-eight = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '8.png')))
-nine = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '9.png')))
+zero = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '0.png')), 1.5)
+one = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '1.png')), 1.5)
+two = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '2.png')), 1.5)
+three = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '3.png')), 1.5)
+four = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '4.png')), 1.5)
+five = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '5.png')), 1.5)
+six = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '6.png')), 1.5)
+seven = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '7.png')), 1.5)
+eight = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '8.png')), 1.5)
+nine = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Cyfry', '9.png')), 1.5)
 
 numbers = {0: zero, 1: one, 2: two, 3: three, 4: four,
            5: five, 6: six, 7: seven, 8: eight, 9: nine}
 
 # piny do 1 lvl
 
-pin_0_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_1_gora.png')))
-pin_1_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_2_gora.png')))
-pin_2_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_3_gora.png')))
-pin_3_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_4_gora.png')))
-pin_4_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_5_gora.png')))
-pin_5_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_6_gora.png')))
-pin_6_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_7_gora.png')))
+pin_0_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_1_gora.png')), 1.5)
+pin_1_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_2_gora.png')), 1.5)
+pin_2_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_3_gora.png')), 1.5)
+pin_3_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_4_gora.png')), 1.5)
+pin_4_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_5_gora.png')), 1.5)
+pin_5_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_6_gora.png')), 1.5)
+pin_6_up = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_7_gora.png')), 1.5)
 
 pins_up = {0: pin_0_up, 1: pin_1_up, 2: pin_2_up, 3: pin_3_up,
             4: pin_4_up, 5: pin_5_up, 6: pin_6_up}
 
-pin_0_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_1_dol.png')))
-pin_1_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_2_dol.png')))
-pin_2_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_3_dol.png')))
-pin_3_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_4_dol.png')))
-pin_4_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_5_dol.png')))
-pin_5_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_6_dol.png')))
-pin_6_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_7_dol.png')))
+pin_0_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_1_dol.png')), 1.5)
+pin_1_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_2_dol.png')), 1.5)
+pin_2_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_3_dol.png')), 1.5)
+pin_3_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_4_dol.png')), 1.5)
+pin_4_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_5_dol.png')), 1.5)
+pin_5_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_6_dol.png')), 1.5)
+pin_6_down = resize(pygame.image.load(os.path.join(path + 'img\\BinaryConvert\\Bolce', 'bolec_7_dol.png')), 1.5)
 
 pins_down = {0: pin_0_down, 1: pin_1_down, 2: pin_2_down,
              3: pin_3_down, 4: pin_4_down, 5: pin_5_down, 6: pin_6_down}
@@ -148,7 +141,7 @@ bullet_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 's
 # gun = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'shotgun.png'))
 
 # Portal pod koniec rundy
-portal = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'finish_portal.png')))
+portal = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'finish_portal.png')), 1.5)
 
 # Sufit
 ceiling_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top_L.png'))
@@ -156,10 +149,9 @@ ceiling_center = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 
 ceiling_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top_R.png'))
 
 # itemy na mapie
-icon = resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'pergamin_ikona.png'))))))
+icon = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'pergamin_ikona.png')), 5.0625)
 pergamin = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'pergamin_ikona.png'))
-cenzura = resize(resize(resize(resize(resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'cenzura.png')))))))))
-potion_max_life = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'potion_max_life.png')))))
+potion_max_life = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'potion_max_life.png')), 3.375)
 
 """
 ###########################################################
@@ -167,13 +159,13 @@ potion_max_life = resize(resize(resize(pygame.image.load(os.path.join(path + 'im
 ###########################################################
 """
 
-cutscena_1 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#1.png')))
-cutscena_2 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#2.png')))
-cutscena_3 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#3.png')))
-cutscena_4 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#4.png')))
-cutscena_5 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#5.png')))
-cutscena_6 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#6.png')))
-cutscena_7 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#7.png')))
+cutscena_1 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#1.png')), 1.5)
+cutscena_2 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#2.png')), 1.5)
+cutscena_3 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#3.png')), 1.5)
+cutscena_4 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#4.png')), 1.5)
+cutscena_5 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#5.png')), 1.5)
+cutscena_6 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#6.png')), 1.5)
+cutscena_7 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cutscena#7.png')), 1.5)
 
 
 """
@@ -183,30 +175,30 @@ cutscena_7 = resize(pygame.image.load(os.path.join(path + 'img\\Cutsceny', 'cuts
 """
 
 #background
-bubble_background = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'mechanizm_szkic.png')))
+bubble_background = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'mechanizm_szkic.png')), 1.5)
 
 helper_bubble_sort = pygame.image.load(os.path.join(path + 'img\\bubble', 'helper_bubble_sort.png'))
 
-switch_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch_off.png')))
-switch_button_light = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch_on.png')))
-next_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_R.png')))
+switch_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch_off.png')), 1.5)
+switch_button_light = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'switch_on.png')), 1.5)
+next_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_R.png')), 1.5)
 
 # cyfry
-image_0 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '0.png')))
-image_1 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '1.png')))
-image_2 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '2.png')))
-image_3 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '3.png')))
-image_4 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '4.png')))
-image_5 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '5.png')))
-image_6 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '6.png')))
-image_7 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '7.png')))
-image_8 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '8.png')))
-image_9 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '9.png')))
+image_0 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '0.png')), 1.5)
+image_1 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '1.png')), 1.5)
+image_2 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '2.png')), 1.5)
+image_3 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '3.png')), 1.5)
+image_4 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '4.png')), 1.5)
+image_5 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '5.png')), 1.5)
+image_6 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '6.png')), 1.5)
+image_7 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '7.png')), 1.5)
+image_8 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '8.png')), 1.5)
+image_9 = resize(pygame.image.load(os.path.join(path + 'img\\bubble', '9.png')), 1.5)
 
 numbers_image = {0: image_0, 1: image_1, 2: image_2, 3: image_3, 4: image_4,
                  5: image_5, 6: image_6, 7: image_7, 8: image_8, 9: image_9}
 
-lock = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'kolatka.png')))))
+lock = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'kolatka.png')))
 
 """
 ###########################################################
@@ -216,43 +208,43 @@ lock = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\bubble',
 
 helper_playfair = pygame.image.load(os.path.join(path + 'img\\PlayFair', 'playfair_helper.png'))
 
-playfair_background = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'backgroundPlayFair.png')))
+playfair_background = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'backgroundPlayFair.png')), 1.5)
 
 #litery
-literaA = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaA.png')))
-literaB = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaB.png')))
-literaC = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaC.png')))
-literaD = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaD.png')))
-literaE = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaE.png')))
-literaF = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaF.png')))
-literaG = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaG.png')))
-literaH = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaH.png')))
-literaI = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaI.png')))
-literaK = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaK.png')))
-literaL = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaL.png')))
-literaM = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaM.png')))
-literaN = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaN.png')))
-literaO = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaO.png')))
-literaP = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaP.png')))
-literaQ = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaQ.png')))
-literaR = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaR.png')))
-literaS = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaS.png')))
-literaT = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaT.png')))
-literaU = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaU.png')))
-literaV = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaV.png')))
-literaW = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaW.png')))
-literaX = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaX.png')))
-literaY = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaY.png')))
-literaZ = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaZ.png')))
+literaA = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaA.png')), 1.5)
+literaB = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaB.png')), 1.5)
+literaC = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaC.png')), 1.5)
+literaD = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaD.png')), 1.5)
+literaE = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaE.png')), 1.5)
+literaF = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaF.png')), 1.5)
+literaG = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaG.png')), 1.5)
+literaH = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaH.png')), 1.5)
+literaI = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaI.png')), 1.5)
+literaK = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaK.png')), 1.5)
+literaL = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaL.png')), 1.5)
+literaM = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaM.png')), 1.5)
+literaN = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaN.png')), 1.5)
+literaO = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaO.png')), 1.5)
+literaP = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaP.png')), 1.5)
+literaQ = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaQ.png')), 1.5)
+literaR = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaR.png')), 1.5)
+literaS = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaS.png')), 1.5)
+literaT = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaT.png')), 1.5)
+literaU = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaU.png')), 1.5)
+literaV = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaV.png')), 1.5)
+literaW = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaW.png')), 1.5)
+literaX = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaX.png')), 1.5)
+literaY = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaY.png')), 1.5)
+literaZ = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'literaZ.png')), 1.5)
 
 letters = {'A': literaA, 'B': literaB, 'C': literaC, 'D': literaD, 'E': literaE, 'F': literaF,
            'G': literaG, 'H': literaH, 'I': literaI, 'K': literaK, 'L': literaL, 'M': literaM,
            'N': literaN, 'O': literaO, 'P': literaP, 'Q': literaQ, 'R': literaR, 'S': literaS,
            'T': literaT, 'U': literaU, 'V': literaV, 'W': literaW, 'X': literaX, 'Y': literaY, 'Z': literaZ}
 
-try_open_button = resize(pygame.image.load(os.path.join(path + 'img\\bubble', 'button_O_light.png')))
+try_open_button = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'drzewo.png')), 5.0625)
 
-table = resize(resize(resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'table.png')))))
+table = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'table.png')), 3.375)
 
 
 """

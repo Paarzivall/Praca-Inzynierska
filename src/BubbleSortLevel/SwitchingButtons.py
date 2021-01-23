@@ -9,7 +9,7 @@ class SwitchingButtons(object):
         self.next_button_pos = {0: (315, 355), 1: (510, 355), 2: (705, 355), 3: (900, 355)}
         self.active_button = 0
         self.lock = main_img.lock
-        self.lock_pos = (540, 500)
+        self.lock_pos = (500, 500)
         self.buttons = {}
         self.buttons_light = main_img.switch_button_light
         self.add_buttons()
