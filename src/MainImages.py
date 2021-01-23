@@ -90,6 +90,7 @@ helper_platform_2 = pygame.image.load(os.path.join(path + 'img\\Platforms_levels
 helper_platform_none = pygame.image.load(os.path.join(path + 'img\\Platforms_levels', 'helper_image_none.png'))
 
 platform_background2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'new_img.jpg'))
+ancient_forrest = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'ancient_forrest.png'))
 
 # Ruchy Postaci
 
@@ -143,10 +144,6 @@ bullet_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 's
 # Portal pod koniec rundy
 portal = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'finish_portal.png')), 1.5)
 
-# Sufit
-ceiling_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top_L.png'))
-ceiling_center = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top.png'))
-ceiling_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wall_top_R.png'))
 
 # itemy na mapie
 icon = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'pergamin_ikona.png')), 5.0625)
