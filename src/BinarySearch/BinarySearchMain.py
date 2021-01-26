@@ -37,7 +37,6 @@ class BinarySearchMain(DrawBackground):
 
     def generate_platform(self):
         self.set_of_platforms.clear()
-        # print(self.tree.tree[self.actual_height_of_lvl - 1].root_letter)
         root = str(self.tree.tree[self.actual_height_of_lvl].root)
         root_letter = self.tree.tree[self.actual_height_of_lvl].root_letter
         left_child = str(self.tree.tree[self.actual_height_of_lvl].left_child)
