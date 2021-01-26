@@ -59,26 +59,6 @@ class GenerateTree(object):
         else:
             return random.randint(array[nr - 2].root, array[nr - 1].root)
 
-    """def generate_tree(self):
-        print(self.array)
-        tree = []
-        for num_of_letter, letter in enumerate(self.array):
-            if num_of_letter < self.height - 1:
-                root = Node(letter)
-                next_letter = self.array[num_of_letter + 1]
-                check = self.check_position(letter, next_letter)
-                if check == 'left':
-                    root.left_child = next_letter
-                    root.right_child = self.generate_letter(letter)
-                else:
-                    root.right_child = next_letter
-                    root.left_child = self.generate_letter(letter)
-            else:
-                root = Node(letter)
-            tree.append(root)
-        return tree"""
-
-
     def print_tree(self):
         for element in self.tree:
             print(
