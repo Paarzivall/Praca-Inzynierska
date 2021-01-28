@@ -8,13 +8,14 @@ Główna klasa odpowiadająca za platformy po których będzie się poruszał na
 
 class Platforms(pygame.sprite.Sprite):
 
-    def __init__(self, width, height, rect_x, rect_y, type):
+    def __init__(self, width, height, rect_x, rect_y, type, img=main_img.platforms_grass):
         """
         :params: współrzędne opisujące położenie danej platformy
         :type: int
         """
         self.width = width
         self.height = height
+        self.img = img
         self.image = pygame.Surface([self.width, self.height])
         self.image = self.image.convert()
         self.image.fill((250, 250, 250))
@@ -65,12 +66,12 @@ class Platforms(pygame.sprite.Sprite):
         """
         blocks_counter = int(self.width / main_img.BLOCKS_WIDTH)
         if blocks_counter == 1:
-            surface.blit(main_img.single_platform, self.rect)
+            surface.blit(self.img[0], self.rect)
         else:
             for i in range(blocks_counter):
                 if i == 0:
-                    surface.blit(main_img.platform_left, (self.rect[0] + i * main_img.BLOCKS_WIDTH, self.rect[1]))
+                    surface.blit(self.img[1], (self.rect[0] + i * main_img.BLOCKS_WIDTH, self.rect[1]))
                 elif i == blocks_counter - 1:
-                    surface.blit(main_img.platform_right, (self.rect[0] + i * main_img.BLOCKS_WIDTH, self.rect[1]))
+                    surface.blit(self.img[3], (self.rect[0] + i * main_img.BLOCKS_WIDTH, self.rect[1]))
                 else:
-                    surface.blit(main_img.platform_center, (self.rect[0] + i * main_img.BLOCKS_WIDTH, self.rect[1]))
+                    surface.blit(self.img[2], (self.rect[0] + i * main_img.BLOCKS_WIDTH, self.rect[1]))

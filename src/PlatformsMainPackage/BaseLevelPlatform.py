@@ -24,7 +24,7 @@ class BaseLevelPlatform(DrawBackground):
         :param player: obiekt gracza
         :type player: src.PlatformsMainPackage.Player
         """
-        super().__init__(background, -300, -300)
+        super().__init__(background, 0, 0)
         self.b_x = self.b_y = -300
         self.board = self.get_frame()
         self.player = player

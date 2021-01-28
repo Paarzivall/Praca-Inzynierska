@@ -89,7 +89,7 @@ helper_platform_1 = pygame.image.load(os.path.join(path + 'img\\Platforms_levels
 helper_platform_2 = pygame.image.load(os.path.join(path + 'img\\Platforms_levels', 'helper_image_1.png'))
 helper_platform_none = pygame.image.load(os.path.join(path + 'img\\Platforms_levels', 'helper_image_none.png'))
 
-platform_background2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'new_img.jpg'))
+platform_background2 = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'svartal_background.png')), 1.5)
 ancient_forrest = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'ancient_forrest.png'))
 
 # Ruchy Postaci
@@ -114,13 +114,26 @@ platform_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', '
 platform_center = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'grass_C.png'))
 platform_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'grass_R.png'))
 single_platform = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'grass_single.png'))
-platforms = [single_platform, platform_left, platform_center, platform_right]
+platforms_grass = [single_platform, platform_left, platform_center, platform_right]
 
 transport_platform_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_L.png'))
 transport_platform_center = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_C.png'))
 transport_platform_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_R.png'))
 single_transport_platform = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'metal_single.png'))
 platforms = [single_transport_platform, transport_platform_left, transport_platform_center, transport_platform_right]
+
+platform_left_stone = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'stone_L.png'))
+platform_center_stone = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'stone_C.png'))
+platform_right_stone = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'stone_R.png'))
+single_platform_stone = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'stone_single.png'))
+platforms_stone = [single_platform_stone, platform_left_stone, platform_center_stone, platform_right_stone]
+
+
+platform_left_wood = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wood_L.png'))
+platform_center_wood = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wood_C.png'))
+platform_right_wood = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wood_R.png'))
+single_platform_wood = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'wood_single.png'))
+platforms_wood = [single_platform_wood, platform_left_wood, platform_center_wood, platform_right_wood]
 
 # Przeciwnicy
 enemy_stand_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_standL.png'))

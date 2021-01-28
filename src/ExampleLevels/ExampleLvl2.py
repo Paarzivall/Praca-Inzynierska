@@ -44,7 +44,7 @@ class ExampleLvl2(BaseLevelPlatform):
         self.platform_with_potion = random.randint(0, len(list_platforms))
         self.platforms_with_heart = 6
         for nr_platformy, parametry in enumerate(list_platforms):
-            platform = Platforms(*parametry, 'normal')
+            platform = Platforms(*parametry, 'normal', main_img.platforms_stone)
             if self.platform_with_tip == nr_platformy:
                 dict_with_items['tip'] = platform
             if self.platform_with_potion == nr_platformy:
