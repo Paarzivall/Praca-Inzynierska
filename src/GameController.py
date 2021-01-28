@@ -1,6 +1,6 @@
 import os
 import pygame
-from src.Level1.Level_1_Main import Level_1_Main
+from src.BinaryConvert.BinaryConvertMain import Level_1_Main
 from src.ExampleLevels.ExampleLvl import ExampleLvl
 from src.ExampleLevels.ExampleLvl2 import ExampleLvl2
 from src.PlatformsMainPackage.Player import Player

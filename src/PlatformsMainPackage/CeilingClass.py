@@ -17,15 +17,6 @@ class CeilingClass(pygame.sprite.Sprite):
         self.rect.x = self.start_position_x = rect_x
         self.rect.y = self.start_position_y = rect_y
 
-    """def __init__(self, start_position_x, start_position_y, len_of_ceiling):
-        self.image = pygame.Surface([980, 150])
-        self.image = self.image.convert()
-        self.image.fill((250, 250, 250))
-        self.rect = self.image.get_rect()
-        self.rect.x = self.start_position = start_position_x
-        self.rect.y = self.finish_position = start_position_y
-        self.width = len_of_ceiling"""
-
     def draw(self, surface):
         blocks_counter = int(self.width / main_img.BLOCKS_WIDTH)
         if blocks_counter == 1:

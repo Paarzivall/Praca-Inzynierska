@@ -1,6 +1,6 @@
 import pygame
 from src.DrawBackground import DrawBackground
-from src.Level1.ActionClass import Action
+from src.BinaryConvert.ActionClass import Action
 import src.MainImages as main_img
 from sys import exit
 

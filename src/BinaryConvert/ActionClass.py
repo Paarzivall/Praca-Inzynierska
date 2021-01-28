@@ -1,7 +1,7 @@
 import pygame
 from sys import exit
-from src.Level1.Pins import Pins
-from src.Level1.Numbers import Numbers
+from src.BinaryConvert.Pins import Pins
+from src.BinaryConvert.Numbers import Numbers
 
 
 class Action(Pins):
