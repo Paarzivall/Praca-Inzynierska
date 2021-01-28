@@ -57,6 +57,9 @@ class BaseLevelPlatform(DrawBackground):
                 self.heart = MainItem(main_img.heart, 'Heart', dict_of_items[item], False)
 
     def generate_portal(self):
+        """
+        metoda generująca portal - zakończenie poziomu
+        """
         self.portal = MapStaticElements(main_img.portal, self.portal.rect.right - 300, self.portal.rect.top)
 
     def generate_enemies_on_platforms(self, platform, life, type_of_enemy):
@@ -66,7 +69,6 @@ class BaseLevelPlatform(DrawBackground):
         :type platform: src.PlatformsMainPackage.Platforms
         :param life: ilość życia danego przeciwnika
         :type life: int
-        :return:
         """
         self.enemy.add(EnemyClass(main_img.enemy_stand_right, life, platform, type_of_enemy))
 
@@ -101,6 +103,12 @@ class BaseLevelPlatform(DrawBackground):
                         enemy.life = 0
 
     def destroy_collide_with_enemy_bullet(self, bullet):
+        """
+        metoda usuwająca obiekty klasy BulletClass z set'u po kolizji z przeciwnikiem
+        :param bullet: obiekt klasy BulletClass
+        :type bullet: BulletClass
+        :return:
+        """
         for shot in self.player.set_of_bullets:
             if shot == bullet:
                 self.player.set_of_bullets.remove(shot)

@@ -53,7 +53,6 @@ class BinarySearchMain(DrawBackground):
         self.generate_answer()
 
     def check_type_of_platform(self, child):
-        print(self.actual_height_of_lvl, self.tree.height)
         if self.actual_height_of_lvl < self.tree.height - 1:
             if self.answer_text[self.actual_height_of_lvl + 1] == child:
                 return 'normal'
