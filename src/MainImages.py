@@ -136,17 +136,30 @@ single_platform_wood = pygame.image.load(os.path.join(path + 'img\\Platforms_Lev
 platforms_wood = [single_platform_wood, platform_left_wood, platform_center_wood, platform_right_wood]
 
 # Przeciwnicy
-enemy_stand_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_standL.png'))
-enemy_stand_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_standL.png'))
-enemy_walk_right1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkR1.png'))
-enemy_walk_right2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkR2.png'))
-enemy_walk_left1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkL1.png'))
-enemy_walk_left2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_walkL2.png'))
-enemy_dead_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_deadL.png'))
-enemy_dead_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'zombie_deadL.png'))
+enemy_first_stand_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_standL.png'))
+enemy_first_stand_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_standL.png'))
+enemy_first_walk_right1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_walkR.png'))
+enemy_first_walk_right2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_walkR2.png'))
+enemy_first_walk_left1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_walkL.png'))
+enemy_first_walk_left2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_walkL2.png'))
+enemy_first_dead_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_deadL.png'))
+enemy_first_dead_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_blue_deadR.png'))
 
-enemy_images_right = [enemy_walk_right1, enemy_walk_right2]
-enemy_images_left = [enemy_walk_left1, enemy_walk_left2]
+draug_blue = [[enemy_first_stand_left, enemy_first_stand_right], [enemy_first_walk_right1, enemy_first_walk_right2],
+              [enemy_first_walk_left1, enemy_first_walk_left2], [enemy_first_dead_left, enemy_first_dead_right]]
+
+enemy_green_stand_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_standL.png'))
+enemy_green_stand_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_standL.png'))
+enemy_green_walk_right1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_walkR.png'))
+enemy_green_walk_right2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_walkR2.png'))
+enemy_green_walk_left1 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_walkL.png'))
+enemy_green_walk_left2 = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_walkL2.png'))
+enemy_green_dead_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_deadL.png'))
+enemy_green_dead_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'draug_green_deadR.png'))
+
+draug_green = [[enemy_green_stand_left, enemy_green_stand_right], [enemy_green_walk_right1, enemy_green_walk_right2],
+              [enemy_green_walk_left1, enemy_green_walk_left2], [enemy_green_dead_left, enemy_green_dead_right]]
+
 
 # Pociski
 bullet_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'strzala_L.png'))

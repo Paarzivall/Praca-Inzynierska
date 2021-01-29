@@ -16,7 +16,7 @@ metody zarządzające całą rozgrywką na "platformach"
 
 
 class BaseLevelPlatform(DrawBackground):
-    def __init__(self, background, player=Player):
+    def __init__(self, background, enemy_images, player=Player):
         """
 
         :param background: obraz tła dla danego levelu
@@ -27,6 +27,7 @@ class BaseLevelPlatform(DrawBackground):
         super().__init__(background, 0, 0)
         self.b_x = self.b_y = -300
         self.board = self.get_frame()
+        self.enemy_images = enemy_images
         self.player = player
         self.set_of_platforms = set()
         self.set_of_enemies = set()
@@ -70,7 +71,7 @@ class BaseLevelPlatform(DrawBackground):
         :param life: ilość życia danego przeciwnika
         :type life: int
         """
-        self.enemy.add(EnemyClass(main_img.enemy_stand_right, life, platform, type_of_enemy))
+        self.enemy.add(EnemyClass(self.enemy_images, life, platform, type_of_enemy))
 
     def calculate_min_y_of_platforms(self, list_of_platforms):
         """

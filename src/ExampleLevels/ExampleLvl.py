@@ -9,7 +9,7 @@ import src.MainImages as main_img
 
 class ExampleLvl(BaseLevelPlatform):
     def __init__(self, player=Player):
-        super().__init__(main_img.platform_background2, player)
+        super().__init__(main_img.platform_background2, main_img.draug_blue, player)
         self.surface = pygame.display.get_surface()
         self.is_done = False
         # przy liście platform zakładam że 1 na liście jest zawsze startową platformą
@@ -23,7 +23,7 @@ class ExampleLvl(BaseLevelPlatform):
                           [490, 70, 4000, 300],  #9
                           [70, 70, 750, 300],  # extra life
                           ]
-        transport_platforms = [[210, 0, 1600, 210],#3
+        transport_platforms = [[140, 0, 1600, 210],#3
                                [210, 0, 3300, 210],#7
                                [210, 0, 3700, 210],#8
                                ]
@@ -49,7 +49,7 @@ class ExampleLvl(BaseLevelPlatform):
             for enemy in platform_for_enemies:
                 if enemy == nr_platformy:
                     self.set_of_enemies.add(platform)
-                    self.generate_enemies_on_platforms(platform, random.randint(1, 3), random.randint(0, 2))
+                    self.generate_enemies_on_platforms(platform, 1, random.randint(0, 1))
                 else:
                     continue
             self.set_of_platforms.add(platform)

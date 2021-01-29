@@ -10,7 +10,7 @@ Główna klasa Przeciwników, która definiuje ich zachowania, położenie etc.
 
 
 class EnemyClass(pygame.sprite.Sprite):
-    def __init__(self, start_img, life, platform, type_of_enemy):
+    def __init__(self, images, life, platform, type_of_enemy):
         """
 
         :param start_img: obraz od którego będzie rysowana animacja na ekranie
@@ -21,11 +21,12 @@ class EnemyClass(pygame.sprite.Sprite):
         :type platform: src.PlatformMainPackage.Platform
         """
         super().__init__()
-        self.image = start_img
+        self.all_img = images
+        self.image = self.all_img[0][1]
         self.type_of_enemy = type_of_enemy
         self.life = life
-        self.images_left = main_img.enemy_images_left
-        self.images_right = main_img.enemy_images_right
+        self.images_left = self.all_img[2]
+        self.images_right = self.all_img[1]
         self.set_of_bullet_enemy = pygame.sprite.Group()
         self.rect = self.image.get_rect()
         self._count = 0
@@ -34,7 +35,7 @@ class EnemyClass(pygame.sprite.Sprite):
         self.enemy_movement_y = 0
         self.platform = platform
         self.start = self.platform.rect.top
-        self.start_x = self.rect.x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
+        self.start_x = self.rect.x = random.randint(self.platform.rect.left + 30, self.platform.rect.right - 30)
         # self.start_x = random.randint(self.platform.rect.left + 50, self.platform.rect.right - 50)
         self.start_y = self.platform.rect.y - 110
         self.angle = 0
@@ -128,9 +129,9 @@ class EnemyClass(pygame.sprite.Sprite):
                     self.shoot_count = 0
         else:
             if self.enemy_movement_x >= 0:
-                self.image = main_img.enemy_dead_right
+                self.image = self.all_img[3][0]
             else:
-                self.image = main_img.enemy_dead_left
+                self.image = self.all_img[3][1]
             self.image.fill((0, 0, 0, 0))
 
     def set_to_start_position_enemy(self):
