@@ -243,7 +243,7 @@ class BaseLevelPlatform(DrawBackground):
                 transport.set_to_start_position()
             for enemy in self.enemy:
                 enemy.set_to_start_position_enemy()
-            self.set_to_start_position(self.b_x, self.b_y)
+            self.set_to_start_position(0, 0)
             self.portal.set_to_start_position()
 
     def move_platform(self, direction):

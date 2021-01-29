@@ -44,10 +44,10 @@ class EnemyClass(pygame.sprite.Sprite):
     def enemy_shoot(self):
         if self.type_of_enemy > 1:
             if self.enemy_movement_x > 0:
-                self.set_of_bullet_enemy.add(BulletClass(main_img.bullet_right, 'right',
+                self.set_of_bullet_enemy.add(BulletClass(main_img.bullet_enemy_right, 'right',
                                                          (self.rect.x, self.platform.rect.y - 60 - self.enemy_movement_y)))
             else:
-                self.set_of_bullet_enemy.add(BulletClass(main_img.bullet_left, 'left',
+                self.set_of_bullet_enemy.add(BulletClass(main_img.bullet_enemy_left, 'left',
                                                          (self.rect.x, self.platform.rect.y - 60 - self.enemy_movement_y)))
 
     def delete_bullet(self):

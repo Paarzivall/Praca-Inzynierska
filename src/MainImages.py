@@ -90,7 +90,7 @@ helper_platform_2 = pygame.image.load(os.path.join(path + 'img\\Platforms_levels
 helper_platform_none = pygame.image.load(os.path.join(path + 'img\\Platforms_levels', 'helper_image_none.png'))
 
 platform_background2 = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'svartal_background.png')), 1.5)
-ancient_forrest = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'ancient_forrest.png'))
+ancient_forest = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'ancient_forest.png')), 1.5)
 
 # Ruchy Postaci
 
@@ -152,7 +152,8 @@ enemy_images_left = [enemy_walk_left1, enemy_walk_left2]
 bullet_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'strzala_L.png'))
 bullet_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'strzala_R.png'))
 
-# gun = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'shotgun.png'))
+bullet_enemy_left = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'kamien_L.png'))
+bullet_enemy_right = pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'kamien_R.png'))
 
 # Portal pod koniec rundy
 portal = resize(pygame.image.load(os.path.join(path + 'img\\Platforms_Levels', 'finish_portal.png')), 1.5)

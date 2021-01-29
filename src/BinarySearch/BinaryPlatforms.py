@@ -17,4 +17,4 @@ class BinaryPlatforms(object):
 
     def draw(self, surface):
         surface.blit(self.image, self.position)
-        surface.blit(self.font.render(self.show_for_user, False, (0, 0, 0)), (self.position[0] + 90, self.position[1] + 20))
+        surface.blit(self.font.render(self.show_for_user, False, (255, 255, 255 )), (self.position[0] + 90, self.position[1] + 20))

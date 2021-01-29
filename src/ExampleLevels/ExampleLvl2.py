@@ -9,7 +9,7 @@ import src.MainImages as main_img
 
 class ExampleLvl2(BaseLevelPlatform):
     def __init__(self, player=Player):
-        super().__init__(main_img.ancient_forrest, player)
+        super().__init__(main_img.ancient_forest, player)
         self.surface = pygame.display.get_surface()
         self.is_done = False
         # przy liście platform zakładam że 1 na liście jest zawsze startową platformą
