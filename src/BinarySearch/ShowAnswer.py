@@ -12,4 +12,4 @@ class ShowAnswer(object):
 
     def draw(self, surface):
         for nr, letter in enumerate(self.answer):
-            surface.blit(self.font.render(str(letter), False, (0, 0, 0)), (self.position[0] + nr * 20, self.position[1] + 20))
+            surface.blit(self.font.render(str(letter), False, (255, 255, 255)), (self.position[0] + nr * 20, self.position[1] + 20))

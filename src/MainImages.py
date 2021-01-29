@@ -263,6 +263,6 @@ table = resize(pygame.image.load(os.path.join(path + 'img\\PlayFair', 'table.png
 ###################### Binary Tree ########################
 ###########################################################
 """
-binary_background = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'background.jpg'))
+binary_background = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'tree_background.png'))
 platform_binary = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'platform.png'))
 helper_binary_tree = pygame.image.load(os.path.join(path + 'img\\BinarySearch', 'binary_helper.png'))
